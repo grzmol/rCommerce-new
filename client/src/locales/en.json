@@ -1,0 +1,10 @@
+{
+  "Username": "Username",
+  "Password": "Password",
+  "Password_ValidityRule": "Check a password between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character.",
+  "Login_Button": "Log In",
+  "Create_New_Account": "Create new account",
+  "Register_Button": "Register",
+  "Email": "E-mail",
+  "Webstore_Name": "rCommerce"
+}

@@ -1,0 +1,42 @@
+.page-header {
+  height: 70px;
+  width: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: background-color 300ms linear, color 300ms linear;
+  -ms-transition: background-color 300ms linear, color 300ms linear;
+  transition: background-color 300ms linear, color 300ms linear;
+  z-index: 5; }
+  .page-header > * {
+    width: calc(100% / 3);
+    padding: 0 45px; }
+  .page-header.header-dark-background {
+    background: rgba(0, 0, 0, 0.3);
+    color: white; }
+    .page-header.header-dark-background .page-logo {
+      height: 300px;
+      background: url("../../assets/rCommerce-logos_white.png") no-repeat;
+      background-size: 300px 300px;
+      display: block;
+      margin-left: calc(50% - 150px); }
+  .page-header .hamburger-menu-open {
+    font-size: 30px; }
+    .page-header .hamburger-menu-open .hamburger-menu-icon {
+      cursor: pointer; }
+  .page-header .page-header-section-center {
+    text-align: center; }
+  .page-header .page-header-section-right {
+    text-align: right; }
+  .page-header .page-logo {
+    height: 300px;
+    background: url("../../assets/rCommerce-logos_black.png") no-repeat;
+    background-size: 300px 300px;
+    display: block;
+    margin-left: calc(50% - 150px); }

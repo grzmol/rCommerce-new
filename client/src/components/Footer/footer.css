@@ -1,0 +1,19 @@
+.page-footer {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px; }
+  .page-footer .page-footer-main {
+    height: 105px;
+    background: #002171; }
+  .page-footer .page-footer-bottom-fade {
+    height: 35px;
+    background: #212121; }
+    .page-footer .page-footer-bottom-fade .copyright-note {
+      width: 100%;
+      color: #f5f5f5;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 14px; }

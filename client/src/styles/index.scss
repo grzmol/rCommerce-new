@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
+@import "colors";
+#root {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  margin: 70px auto 0;
+  font-family: 'Open Sans', sans-serif;
+  color: $color-text-dark;
+  background: $color-background;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Roboto', sans-serif;
+}

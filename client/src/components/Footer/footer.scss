@@ -1,0 +1,25 @@
+@import "../../../../../rCommerce/client/src/styles/colors";
+
+.page-footer {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  .page-footer-main {
+    height: 105px;
+    background: $color-theme-dark;
+  }
+  .page-footer-bottom-fade {
+    height: 35px;
+    background: $color-dark-gray;
+    .copyright-note {
+      width: 100%;
+      color: $color-text-light;
+      text-align: center;
+      padding: 8px 0;
+      font-size: 14px;
+    }
+  }
+}

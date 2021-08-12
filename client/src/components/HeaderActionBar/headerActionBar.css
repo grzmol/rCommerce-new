@@ -1,0 +1,9 @@
+.page-header-actions {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap; }
+  .page-header-actions > * {
+    margin-right: 20px;
+    cursor: pointer; }
+  .page-header-actions .header-action-icon {
+    font-size: 20px; }

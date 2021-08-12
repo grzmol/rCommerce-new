@@ -1,0 +1,11 @@
+.login-form {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 250px); }
+  @media (max-width: 768px) {
+    .login-form {
+      width: calc(100% - 50px);
+      left: 15px;
+      rigth: 15px; } }

@@ -1,0 +1,10 @@
+{
+  "Username": "Nazwa użytkownika",
+  "Password": "Hasło",
+  "Password_ValidityRule": "Sprawdź czy hasło zawiera od 8 do 15 znaków. Hasło musi składać się ponadto z przynajmniej jednej małej litery, jednej wielkiej litery, jednej cyfry i jednego znaku specjalnego.",
+  "Login_Button": "Zaloguj",
+  "Create_New_Account": "Stwórz nowe konto",
+  "Register_Button": "Zarejestruj się",
+  "Email": "Adres e-mail",
+  "Webstore_Name": "rCommerce"
+}
