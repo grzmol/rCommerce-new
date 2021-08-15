@@ -6,7 +6,6 @@ import App from "./App";
 import LoginPage from "./pages/loginPage";
 import RegisterPage from './pages/registerPage';
 
-import "typeface-roboto";
 import registerServiceWorker from "./registerServiceWorker";
 
 import './i18n';

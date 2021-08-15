@@ -6,11 +6,9 @@ import HeaderComponent from "./components/Header/header";
 
 const authService = new AuthService();
 const App = ({history}) => (
-
-
     <div>
+        <HeaderComponent history={authService} isLoggedIn={authService.isLoggedIn()} user={authService.getProfile()} />
         <Container>
-            <HeaderComponent history={history}/>
             <Switch>
                 <Route exact path="/" component={Home}/>
             </Switch>
