@@ -1,0 +1,49 @@
+{
+  "name": "calendar-io2020-client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/styles": "^4.10.0",
+    "axios": "^0.21.0",
+    "express": "^4.16.2",
+    "i18next": "^20.4.0",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "i18next-xhr-backend": "^3.2.2",
+    "jwt-decode": "^2.2.0",
+    "morgan": "^1.9.0",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-html-parser": "^2.0.2",
+    "react-i18next": "^11.11.4",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "socket.io-client": "^2.0.4"
+  },
+  "scripts": {
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001"
+    },
+    "/auth": {
+      "target": "http://localhost:3001"
+    },
+    "/socket": {
+      "target": "ws://localhost:3001",
+      "ws": true
+    }
+  }
+}

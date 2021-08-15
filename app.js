@@ -8,13 +8,13 @@ import logger from "morgan";
 import bodyParser from "body-parser";
 import {
     HomeController,
-    UsersController
+    UsersController,
+    RegistrationController,
+    LoginController
 } from "./server/controllers";
 import { AuthVerifyMiddleware } from "./server/middlewares";
 
 import config from "./server/config";
-import RegistrationController from "./server/controllers/registrationController";
-import LoginController from "./server/controllers/loginController";
 
 
 
