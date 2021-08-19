@@ -1,22 +1,28 @@
 import React from 'react';
 import "./headerActionBar.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShoppingCart, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons'
+import {faShoppingCart, faSignInAlt, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom';
 
-const HeaderActionBarComponent = (props) => {
+
+const HeaderActionBarComponent = ({history}) => {
+
     return (
         <div className='page-header-actions'>
             <div className='header-action-cart'>
-                <FontAwesomeIcon className="header-action-icon" icon={faShoppingCart} />
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/cart')} icon={faShoppingCart} />
             </div>
             <div className='header-action-user'>
-                <FontAwesomeIcon className="header-action-icon" icon={faUser} />
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account')} icon={faUser} />
             </div>
-            <div className='header-action-user' style={{display: props.isLoggedIn ? 'block' : 'none'}}>
-                <FontAwesomeIcon className="header-action-icon" icon={faSignOutAlt} />
+            <div className='header-action-logout'>
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/logout')} icon={faSignOutAlt} />
+            </div>
+            <div className='header-action-login'>
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')} icon={faSignInAlt} />
             </div>
         </div>
     );
 
 }
-export default HeaderActionBarComponent;
+export default withRouter(HeaderActionBarComponent);

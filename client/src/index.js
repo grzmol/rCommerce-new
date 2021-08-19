@@ -5,11 +5,11 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import App from "./App";
 import LoginPage from "./pages/loginPage";
 import RegisterPage from './pages/registerPage';
+import AdminPage from "./pages/adminPage";
 
 import registerServiceWorker from "./registerServiceWorker";
 
 import './i18n';
-
 import './styles/index.scss';
 
 ReactDOM.render(
@@ -17,6 +17,7 @@ ReactDOM.render(
         <Switch>
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage}/>
+            <Route exact path="/admin" component={AdminPage}/>
             <Route component={App} />
         </Switch>
     </BrowserRouter>,
