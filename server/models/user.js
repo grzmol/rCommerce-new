@@ -12,14 +12,14 @@ let userSchema =new Schema({
 });
 
 userSchema.pre('save', function (next) {
-    var user = this;
+    let user = this;
     if (!user.isModified('password')) {return next()};
     bcrypt.hash(user.password,10).then((hashedPassword) => {
         user.password = hashedPassword;
         next();
     })
 }, function (err) {
-    next(err)
+    console.log(err);
 });
 
 userSchema.methods.comparePassword=function(candidatePassword,next){    
