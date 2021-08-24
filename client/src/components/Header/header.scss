@@ -1,4 +1,13 @@
 @import "../../styles/colors";
+.hamburger-menu__open {
+  & > .hamburger-menu {
+    left: 0;
+  }
+  & > .page-header {
+    width: calc(100% - 400px);
+    left: 400px;
+  }
+}
 
 .page-header {
   height: 70px;
@@ -12,10 +21,8 @@
   top: 0;
   left: 0;
   right: 0;
-  -webkit-transition: background-color 300ms linear, color 300ms linear;
-  -ms-transition: background-color 300ms linear, color 300ms linear;
-  transition: background-color 300ms linear, color 300ms linear;
-  z-index: 5;
+  transition: background-color 300ms linear, color 300ms linear, left 1s, width 1s;
+  z-index: 2;
   & > * {
     width: calc(100% / 3);
     padding: 0 45px;
@@ -25,11 +32,11 @@
     color: white;
 
     .page-logo {
-      height: 300px;
+      height: 50px;
       background: url("../../assets/rCommerce-logos_white.png") no-repeat;
-      background-size: 300px 300px;
+      background-size: contain;
       display: block;
-      margin-left: calc(50% - 150px);
+      margin-left: calc(50% - 130px);
     }
   }
   .hamburger-menu-open {
@@ -45,10 +52,10 @@
     text-align: right;
   }
   .page-logo {
-    height: 300px;
+    height: 50px;
     background: url("../../assets/rCommerce-logos_black.png") no-repeat;
-    background-size: 300px 300px;
+    background-size: contain;
     display: block;
-    margin-left: calc(50% - 150px);
+    margin-left: calc(50% - 130px);
   }
 }

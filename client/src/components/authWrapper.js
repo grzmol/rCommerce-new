@@ -3,8 +3,8 @@ import AuthService from '../services/authService';
 
 export default function AuthWrapper(AuthComponent) {
     return class AuthWrapped extends Component {
-        constructor() {
-            super();
+        constructor(props) {
+            super(props);
             this.auth = new AuthService();
             this.state = {
                 user: null

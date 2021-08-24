@@ -1,0 +1,10 @@
+.hamburger-menu {
+  width: 400px;
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
+  top: 0;
+  left: -400px;
+  background: #fafafa;
+  border-right: 1px solid #dfdfdf;
+  transition: left 1s; }

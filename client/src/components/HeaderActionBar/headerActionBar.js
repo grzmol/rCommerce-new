@@ -5,7 +5,7 @@ import {faShoppingCart, faSignInAlt, faSignOutAlt, faUser} from '@fortawesome/fr
 import { withRouter } from 'react-router-dom';
 
 
-const HeaderActionBarComponent = ({history}) => {
+const HeaderActionBarComponent = ({history, ...props}) => {
 
     return (
         <div className='page-header-actions'>
@@ -15,12 +15,14 @@ const HeaderActionBarComponent = ({history}) => {
             <div className='header-action-user'>
                 <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account')} icon={faUser} />
             </div>
-            <div className='header-action-logout'>
-                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/logout')} icon={faSignOutAlt} />
-            </div>
-            <div className='header-action-login'>
-                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')} icon={faSignInAlt} />
-            </div>
+            {   props.isLoggedIn ?
+                <div className='header-action-logout'>
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/logout')} icon={faSignOutAlt} />
+                </div> :
+                <div className='header-action-login'>
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')} icon={faSignInAlt} />
+                </div>
+            }
         </div>
     );
 
