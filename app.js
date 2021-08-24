@@ -8,13 +8,13 @@ import logger from "morgan";
 import bodyParser from "body-parser";
 import {
     HomeController,
-    UsersController
+    UsersController,
+    RegistrationController,
+    LoginController, ImageController
 } from "./server/controllers";
 import { AuthVerifyMiddleware } from "./server/middlewares";
 
 import config from "./server/config";
-import RegistrationController from "./server/controllers/registrationController";
-import LoginController from "./server/controllers/loginController";
 
 
 
@@ -47,6 +47,7 @@ app.use("/auth/register", RegistrationController());
 app.use('/api', AuthVerifyMiddleware(app));
 app.use("/api/home", HomeController(io));
 app.use("/api/users", UsersController());
+app.use("/api/image", ImageController());
 
 
 // express will serve up index.html if it doesn't recognize the route

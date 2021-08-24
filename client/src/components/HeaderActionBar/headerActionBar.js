@@ -1,30 +1,30 @@
 import React from 'react';
-import "./headerActionBar.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import WbSunny from "@material-ui/icons/WbSunny";
-import ListItemText from "@material-ui/core/ListItemText";
-import {Link} from "react-router-dom";
+import "./headerActionBar.css";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faShoppingCart, faSignInAlt, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom';
 
 
-export default class HeaderActionBarComponent extends React.Component {
-    render() {
+const HeaderActionBarComponent = ({history, ...props}) => {
 
-
-        return (
-            <div className='page-header-actions'>
-                <div className='header-action-cart'>
-                    <FontAwesomeIcon className="header-action-icon" icon={faShoppingCart} />
-                </div>
-                <div className='header-action-user'>
-                    <FontAwesomeIcon className="header-action-icon" icon={faUser} />
-                </div>
-                <ListItem button key={'weather'}>
-                    <ListItemText primary={<Link to="/weather">Weather</Link>} />
-                </ListItem>
+    return (
+        <div className='page-header-actions'>
+            <div className='header-action-cart'>
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/cart')} icon={faShoppingCart} />
             </div>
-        )
-    }
+            <div className='header-action-user'>
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account')} icon={faUser} />
+            </div>
+            {   props.isLoggedIn ?
+                <div className='header-action-logout'>
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/logout')} icon={faSignOutAlt} />
+                </div> :
+                <div className='header-action-login'>
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')} icon={faSignInAlt} />
+                </div>
+            }
+        </div>
+    );
+
 }
+export default withRouter(HeaderActionBarComponent);

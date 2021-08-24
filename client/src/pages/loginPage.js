@@ -34,8 +34,9 @@ class LoginPage extends Component {
     }
 
     componentWillMount() {
-        if(this.auth.isLoggedIn())
+        if(this.auth.isLoggedIn()){
             this.props.history.replace('/');
+        }
     }
 
     render() {
@@ -77,7 +78,7 @@ class LoginPage extends Component {
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button color="secondary" fullWidth type="submit" variant="contained">
+                                <Button color="#002171" fullWidth type="submit" variant="contained" style={{backgroundColor: '#002171', color: 'white'}}>
                                     {t('Login_Button')}
                                 </Button>
                             </Grid>

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./headerActionBar.scss";
+import "./heroImage.scss";
 
 export default class HeroImageComponent extends React.Component {
     render() {

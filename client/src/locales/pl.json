@@ -6,5 +6,8 @@
   "Create_New_Account": "Stwórz nowe konto",
   "Register_Button": "Zarejestruj się",
   "Email": "Adres e-mail",
-  "Webstore_Name": "rCommerce"
+  "Webstore_Name": "rCommerce",
+  "Admin_Products": "Produkty",
+  "Admin_Orders": "Zamówienia",
+  "Admin_Customers": "Użytkownicy"
 }
