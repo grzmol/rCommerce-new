@@ -4,9 +4,12 @@ let Schema = mongoose.Schema;
 
 let productSchema = new Schema({
     name: String,
+    productCode: String,
     shortDesc: String,
     longDesc: String,
-    price: Number
+    price: Number,
+    category: String,
+    image: String
 });
 
 export default mongoose.model('Product', productSchema);

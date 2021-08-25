@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import HeaderActionBarComponent from "../HeaderActionBar/headerActionBar";
 import HamburgerMenuComponent from "../HamburgerMenu/hamburgerMenu";
+import _ from 'lodash';
 
 const HeaderComponent = (props) => {
     const [backgroundClass, setBackgroundClass] = useState('');
@@ -36,10 +37,23 @@ const HeaderComponent = (props) => {
 
     }
 
+    const displayHeader = () => {
+        let pagesWithoutHeader = props.pagesWithoutHeader;
+        let pathname = window.location.pathname;
+        let result = true;
 
+        _.each(pagesWithoutHeader, (item) => {
+            if(pathname.indexOf(item) !== -1){
+                result = false;
+            }
+        })
+        return result;
+    }
 
     return (
-        <div className={menuOpenClass}>
+
+        <div className={'page-header-component ' + menuOpenClass} style={{display: displayHeader() ? 'block' : 'none'}}>
+
             <HamburgerMenuComponent />
             <div className={'page-header ' + backgroundClass}>
                 <div className="page-header-section-left">
@@ -52,7 +66,7 @@ const HeaderComponent = (props) => {
                 </div>
                 <div className="page-header-section-right">
                     {console.log('sxsss', props)}
-                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} logoutAction={props.logout}/>
+                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} logoutAction={props.history.logout}/>
                 </div>
             </div>
         </div>

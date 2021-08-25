@@ -6,7 +6,11 @@ export default class HamburgerMenuComponent extends React.Component {
         super(props);
 
         this.state = {
-            menuItems: []
+            menuItems: [
+                {
+                    "name": ""
+                }
+            ]
         }
     }
 

@@ -17,11 +17,13 @@ class App extends React.Component {
     render() {
         let {history} = this.props;
         let authService = new AuthService();
+
+        const pagesWithoutHeader = ['admin', 'login', 'register'];
         return (
             <BrowserRouter>
                 <div>
                     <HeaderComponent history={authService} isLoggedIn={authService.isLoggedIn()}
-                                     user={authService.getProfile()}/>
+                                     user={authService.getProfile()} pagesWithoutHeader={pagesWithoutHeader}/>
                     <Switch>
                         <Route exact path="/" component={HomePage}/>
                         <Route path="/login" component={LoginPage}/>
