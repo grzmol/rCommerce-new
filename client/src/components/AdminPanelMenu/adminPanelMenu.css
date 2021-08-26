@@ -1,5 +1,3 @@
-@import "../../styles/colors";
-
 .admin-menu {
   width: 300px;
   position: fixed;
@@ -7,13 +5,9 @@
   bottom: 0;
   top: 0;
   left: 0;
-  background: $color-background;
+  background: #fafafa;
   border-right: 1px solid #dfdfdf;
-  transition: left 1s;
-
-
-  .page-logo {
+  transition: left 1s; }
+  .admin-menu .page-logo {
     margin: 20px;
-    height: 55px;
-  }
-}
+    height: 55px; }

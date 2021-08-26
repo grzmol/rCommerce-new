@@ -1,8 +1,12 @@
 import React from 'react';
 
 import { withTranslation } from 'react-i18next';
-import { withRouter } from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 import './adminPanel.css'
+import AdminPanelMenuComponent from "../AdminPanelMenu/adminPanelMenu";
+import ProductDashboardComponent from "./ProductDashboard/productDashboard";
+import OrdersDashboardComponent from "./OrdersDashboard/ordersDashboard";
+import CustomersDashboardComponent from "./CustomersDashboard/customersDashboard";
 
 class AdminPanelComponent extends React.Component {
 
@@ -18,8 +22,13 @@ class AdminPanelComponent extends React.Component {
     render() {
         const {t} = this.props;
         return (
-            <div>
-
+            <div className={'admin-panel'}>
+                <AdminPanelMenuComponent />
+                <div className={'admin-dashboard'}>
+                    <Route path={`${this.props.match.path}/products`} component={ProductDashboardComponent} />
+                    <Route path={`${this.props.match.path}/orders`} component={OrdersDashboardComponent} />
+                    <Route path={`${this.props.match.path}/customers`} component={CustomersDashboardComponent} />
+                </div>
             </div>
         );
     }

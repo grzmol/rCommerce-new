@@ -6,11 +6,12 @@ import cookieParser from "cookie-parser";
 import socketIO from "socket.io";
 import logger from "morgan";
 import bodyParser from "body-parser";
+import cors from 'cors';
 import {
     HomeController,
     UsersController,
     RegistrationController,
-    LoginController, ImageController
+    LoginController, ImageController, MenuController, ProductController
 } from "./server/controllers";
 import { AuthVerifyMiddleware } from "./server/middlewares";
 
@@ -40,6 +41,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(cors());
+
 
 app.use("/auth/login", LoginController(app));
 app.use("/auth/register", RegistrationController());
@@ -48,6 +51,8 @@ app.use('/api', AuthVerifyMiddleware(app));
 app.use("/api/home", HomeController(io));
 app.use("/api/users", UsersController());
 app.use("/api/image", ImageController());
+app.use("/api/menu", MenuController());
+app.use("/api/product", ProductController());
 
 
 // express will serve up index.html if it doesn't recognize the route

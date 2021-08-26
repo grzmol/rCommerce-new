@@ -19,6 +19,7 @@ class App extends React.Component {
         let authService = new AuthService();
 
         const pagesWithoutHeader = ['admin', 'login', 'register'];
+        const pagesWithoutFooter = ['admin'];
         return (
             <BrowserRouter>
                 <div>
@@ -33,7 +34,7 @@ class App extends React.Component {
                         <Route path="/productList" component={ProductListPage}/>
                         <Route path="/account" component={AccountPage}/>
                     </Switch>
-                    <FooterComponent/>
+                    <FooterComponent pagesWithoutFooter={pagesWithoutFooter}/>
                 </div>
             </BrowserRouter>
         );

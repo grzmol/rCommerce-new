@@ -1,5 +1,15 @@
-.page-logo {
+.admin-panel .page-logo {
   height: 150px;
   background: url("../../assets/rCommerce-logos_black.png") no-repeat;
   background-size: contain;
   display: block; }
+
+.admin-panel .admin-panel {
+  position: relative; }
+
+.admin-panel .admin-dashboard {
+  position: absolute;
+  left: 300px;
+  top: 0;
+  bottom: 0;
+  right: 0; }
