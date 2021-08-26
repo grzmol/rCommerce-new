@@ -4,23 +4,24 @@ let router = express.Router();
 
 const ImageController = () => {
 
-    router.post('/getImage', async (req, res) => {
-        let users = await ImageModel.findOne({name: req.body.name });
-        res.json({users: users});
+    router.get('/:name', async (req, res) => {
+        let image = await ImageModel.findOne({name: req.params.name });
+        res.json(...image);
     });
 
     router.post('/saveImage', async (req, res) => {
         let image = {
             name: req.body.name,
             desc: req.body.desc,
-            imgBase64: req.body.imgBase64
+            imgBase64: req.body.imgBase64,
+            type: req.body.type,
+            product: req.body.product
         };
         let newImage = new ImageModel(image);
         await newImage.save(err => {
             if(err) throw err;
-
             res.json({success: true, newImage: newImage});
-        })
+        });
     });
     return router;
 }

@@ -17,11 +17,14 @@ class App extends React.Component {
     render() {
         let {history} = this.props;
         let authService = new AuthService();
+
+        const pagesWithoutHeader = ['admin', 'login', 'register'];
+        const pagesWithoutFooter = ['admin'];
         return (
             <BrowserRouter>
                 <div>
                     <HeaderComponent history={authService} isLoggedIn={authService.isLoggedIn()}
-                                     user={authService.getProfile()}/>
+                                     user={authService.getProfile()} pagesWithoutHeader={pagesWithoutHeader}/>
                     <Switch>
                         <Route exact path="/" component={HomePage}/>
                         <Route path="/login" component={LoginPage}/>
@@ -31,7 +34,7 @@ class App extends React.Component {
                         <Route path="/productList" component={ProductListPage}/>
                         <Route path="/account" component={AccountPage}/>
                     </Switch>
-                    <FooterComponent/>
+                    <FooterComponent pagesWithoutFooter={pagesWithoutFooter}/>
                 </div>
             </BrowserRouter>
         );

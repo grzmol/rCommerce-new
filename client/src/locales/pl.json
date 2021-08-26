@@ -7,7 +7,7 @@
   "Register_Button": "Zarejestruj się",
   "Email": "Adres e-mail",
   "Webstore_Name": "rCommerce",
-  "Admin_Products": "Produkty",
-  "Admin_Orders": "Zamówienia",
-  "Admin_Customers": "Użytkownicy"
+  "MenuItem_Products": "Produkty",
+  "MenuItem_Orders": "Zamówienia",
+  "MenuItem_Customers": "Użytkownicy"
 }

@@ -1,21 +1,36 @@
 import React from 'react';
 import "./footer.css";
+import _ from "lodash";
 
-export default class FooterComponent extends React.Component {
-    render() {
-        return (
-            <div className="page-footer">
-                <div className="page-footer-main">
-fdsf
-                </div>
-                <div className="page-footer-bottom-fade">
-                    <div className="copyright-note">
+const FooterComponent = (props) => {
+
+    const displayFooter = () => {
+        let pagesWithoutFooter = props.pagesWithoutFooter;
+        let pathname = window.location.pathname;
+        let result = true;
+
+        _.each(pagesWithoutFooter, (item) => {
+            if(pathname.indexOf(item) !== -1){
+                result = false;
+            }
+        })
+        return result;
+    }
+
+    return (
+        <div className="page-footer"  style={{display: displayFooter() ? 'block' : 'none'}}>
+            <div className="page-footer-main">
+                fdsf
+            </div>
+            <div className="page-footer-bottom-fade">
+                <div className="copyright-note">
                         <span>
                             Copyright © Grzegorz Mołdawa 2021
                         </span>
-                    </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
+export default FooterComponent;

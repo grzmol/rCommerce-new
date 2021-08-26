@@ -5,8 +5,13 @@ let router = express.Router();
 const MenuController = () => {
 
     router.get('/', async (req, res) => {
-        let users = await ImageModel.findOne({name: req.body.name });
-        res.json({users: users});
+        let menuItems = await MenuItem.find({});
+        res.json({success: true, data: menuItems});
+    });
+
+    router.get('/:name', async (req, res) => {
+        let menuItems = await MenuItem.findOne({name: req.params.name });
+        res.json({success: true, data: menuItems});
     });
 
     router.post('/', async (req, res) => {

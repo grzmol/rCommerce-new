@@ -4,6 +4,7 @@ export default class AuthService {
     constructor() {
         this.login = this.login.bind(this);
         this.getProfile = this.getProfile.bind(this);
+        this.logout = this.logout.bind(this);
         this.tokenName = 'JWS_TOKEN';
     }
 
@@ -62,18 +63,23 @@ export default class AuthService {
     logout() {
         // Clear user token and profile data from localStorage
         localStorage.removeItem('JWS_TOKEN');
+        localStorage.removeItem('username');
         window.location.reload(true);
     }
 
     getProfile() {
         // Using jwt-decode npm package to decode the token
-        return decode(this.getToken());
+        const token = this.getToken();
+        if(token){
+            return decode(token);
+        }
+        return {};
     }
 
     isLoggedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.getToken() // GEtting token from localstorage
-        return !!token && !this.isTokenExpired(token) // handwaiving here
+        return Boolean(token && !this.isTokenExpired(token))// handwaiving here
     }
 
     isTokenExpired(token) {

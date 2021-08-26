@@ -1,0 +1,13 @@
+.menu--item {
+  padding: 15px;
+  transition: 600ms background-color;
+  text-decoration: none;
+  color: #212121;
+  font-size: 1.2rem;
+  display: block; }
+  .menu--item .menu-item_icon {
+    margin-right: 15px; }
+  .menu--item:not(:last-of-type) {
+    border-bottom: 1px solid #dfdfdf; }
+  .menu--item:hover {
+    background-color: rgba(0, 0, 0, 0.2); }

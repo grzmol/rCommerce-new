@@ -1,0 +1,19 @@
+@import "../../styles/colors";
+
+.admin-menu {
+  width: 300px;
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  background: $color-background;
+  border-right: 1px solid #dfdfdf;
+  transition: left 1s;
+
+
+  .page-logo {
+    margin: 20px;
+    height: 55px;
+  }
+}
