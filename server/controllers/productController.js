@@ -6,7 +6,7 @@ const ProductController = () => {
 
     router.get('/', async (req, res) => {
         let products = await ProductModel.find({});
-        res.json({success: true, data: products});
+        res.json(products);
     });
 
     router.get('/:productCode', async (req, res) => {
