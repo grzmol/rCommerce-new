@@ -55,10 +55,11 @@ const ProductDashboardListComponent = (props) => {
         <MaterialTable
             title={t('MenuItem_Products')}
             columns={[
+                { title: '', field: 'img', render: item => <img src={item.image} alt="" border="3" height="100" width="100" />},
                 { title: t('ProductTable_Name'), field: 'name' },
                 { title: t('ProductTable_Code'), field: 'productCode' },
-                { title: t('ProductTable_Desc'), field: 'shortDesc' },
-                { title: t('ProductTable_Price'), field: 'price', type: 'numeric' },
+                { title: t('ProductTable_Desc'), field: 'desc' },
+                { title: t('ProductTable_Price'), field: 'price', type: 'numeric', render: item => item.price + ' PLN' },
             ]}
             data={props.productList}
             options={{

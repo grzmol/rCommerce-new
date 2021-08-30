@@ -5,8 +5,7 @@ let Schema = mongoose.Schema;
 let productSchema = new Schema({
     name: String,
     productCode: String,
-    shortDesc: String,
-    longDesc: String,
+    desc: String,
     price: Number,
     category: String,
     image: String

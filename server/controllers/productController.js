@@ -18,8 +18,7 @@ const ProductController = () => {
         let product = {
             name: req.body.name,
             productCode: req.body.productCode,
-            shortDesc: req.body.shortDesc,
-            longDesc: req.body.longDesc,
+            desc: req.body.desc,
             price: req.body.price,
             category: req.body.category,
             image: req.body.image
@@ -27,7 +26,7 @@ const ProductController = () => {
         let newProduct = new ProductModel(product);
         await newProduct.save(err => {
             if(err) throw err;
-            res.json({success: true, data: newProduct});
+            res.json(newProduct);
         });
     });
     return router;

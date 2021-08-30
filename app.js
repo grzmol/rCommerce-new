@@ -9,15 +9,15 @@ import bodyParser from "body-parser";
 import cors from 'cors';
 import {
     HomeController,
-    UsersController,
+    LoginController,
+    MenuController,
+    ProductController,
     RegistrationController,
-    LoginController, ImageController, MenuController, ProductController
+    UsersController
 } from "./server/controllers";
-import { AuthVerifyMiddleware } from "./server/middlewares";
+import {AuthVerifyMiddleware} from "./server/middlewares";
 
 import config from "./server/config";
-
-
 
 
 const app = express();
@@ -25,7 +25,7 @@ let server = http.Server(app);
 let io = socketIO(server);
 
 mongoose.Promise = Promise;
-mongoose.connect(config.database, { useNewUrlParser: true }).catch(error => handleError(error));
+mongoose.connect(config.database, {useNewUrlParser: true}).catch(error => handleError(error));
 app.set('superSecret', config.secret);
 
 
@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "client", "build")));
@@ -50,7 +50,6 @@ app.use("/auth/register", RegistrationController());
 app.use('/api', AuthVerifyMiddleware(app));
 app.use("/api/home", HomeController(io));
 app.use("/api/users", UsersController());
-app.use("/api/image", ImageController());
 app.use("/api/menu", MenuController());
 app.use("/api/product", ProductController());
 
