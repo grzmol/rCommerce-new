@@ -79,6 +79,8 @@ export default class AuthService {
     isLoggedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.getToken() // GEtting token from localstorage
+        console.log('token', token)
+        console.log('ddd', this.isTokenExpired(token))
         return Boolean(token && !this.isTokenExpired(token))// handwaiving here
     }
 

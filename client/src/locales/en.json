@@ -43,5 +43,8 @@
   "ProductTable_Name": "Name",
   "ProductTable_Price": "Price",
   "ProductTable_Code": "Product code",
-  "ProductTable_Desc": "Description"
+  "ProductTable_Desc": "Description",
+  "ProductDashboard_NewProduct": "Nowy produkt",
+  "ProductModal_SelectImage": "Zdjęcie produktu:",
+  "ProductModal_AddProduct": "Dodaj Produkt"
 }

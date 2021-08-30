@@ -43,5 +43,6 @@
   "ProductTable_Name": "Nazwa",
   "ProductTable_Price": "Cena",
   "ProductTable_Code": "Kod produktu",
-  "ProductTable_Desc": "Opis"
+  "ProductTable_Desc": "Opis",
+  "ProductDashboard_NewProduct": "Nowy produkt"
 }

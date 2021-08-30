@@ -1,6 +1,7 @@
 import React from "react";
 import AdminPanelComponent from "../components/AdminPanel/adminPanel";
 import AuthService from "../services/authService";
+import AuthWrapper from "../components/authWrapper";
 let authService = new AuthService();
 const AdminPage = () => {
     return (
@@ -11,4 +12,4 @@ const AdminPage = () => {
     );
 }
 
-export default AdminPage;
+export default AuthWrapper(AdminPage);
