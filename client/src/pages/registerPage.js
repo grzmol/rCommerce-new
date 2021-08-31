@@ -7,7 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 
 import AuthService from "../services/authService";
 
-import { withTranslation } from 'react-i18next';
+import {withTranslation} from 'react-i18next';
 
 class RegisterPage extends Component {
     constructor(props) {

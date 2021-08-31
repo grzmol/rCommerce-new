@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import AuthService from '../services/authService';
 
 export default function AuthWrapper(AuthComponent) {

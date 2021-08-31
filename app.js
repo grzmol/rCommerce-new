@@ -13,7 +13,8 @@ import {
     MenuController,
     ProductController,
     RegistrationController,
-    UsersController
+    UsersController,
+    CategoryController
 } from "./server/controllers";
 import {AuthVerifyMiddleware} from "./server/middlewares";
 
@@ -52,6 +53,7 @@ app.use("/api/home", HomeController(io));
 app.use("/api/users", UsersController());
 app.use("/api/menu", MenuController());
 app.use("/api/product", ProductController());
+app.use("/api/category", CategoryController());
 
 
 // express will serve up index.html if it doesn't recognize the route

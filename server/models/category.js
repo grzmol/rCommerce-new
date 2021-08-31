@@ -4,7 +4,8 @@ let Schema = mongoose.Schema;
 
 let categorySchema = new Schema({
     name: String,
-    displayName: String,
+    displayNameEN: String,
+    displayNamePL: String,
     desc: String
 });
 
