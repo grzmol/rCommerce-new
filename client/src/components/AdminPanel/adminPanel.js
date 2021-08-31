@@ -1,18 +1,16 @@
 import React from 'react';
 
-import { withTranslation } from 'react-i18next';
 import {Route, withRouter} from 'react-router-dom';
 import './adminPanel.css'
 import AdminPanelMenuComponent from "../AdminPanelMenu/adminPanelMenu";
 import ProductDashboardComponent from "./ProductDashboard/productDashboard";
 import OrdersDashboardComponent from "./OrdersDashboard/ordersDashboard";
 import CustomersDashboardComponent from "./CustomersDashboard/customersDashboard";
+import MenuDashboardComponent from "./MenuDashboard/menuDashboard";
+import CategoryDashboardComponent from "./CategoriesDashboard/categoriesDashboard";
 
 class AdminPanelComponent extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
     componentDidMount() {
         if(!this.props.isAdmin){
             this.props.history.replace('/');
@@ -20,18 +18,19 @@ class AdminPanelComponent extends React.Component {
     }
 
     render() {
-        const {t} = this.props;
         return (
             <div className={'admin-panel'}>
                 <AdminPanelMenuComponent />
                 <div className={'admin-dashboard'}>
                     <Route path={`${this.props.match.path}/products`} component={ProductDashboardComponent} />
                     <Route path={`${this.props.match.path}/orders`} component={OrdersDashboardComponent} />
+                    <Route path={`${this.props.match.path}/category`} component={CategoryDashboardComponent} />
                     <Route path={`${this.props.match.path}/customers`} component={CustomersDashboardComponent} />
+                    <Route path={`${this.props.match.path}/menu`} component={MenuDashboardComponent} />
                 </div>
             </div>
         );
     }
 }
 
-export default withTranslation()(withRouter(AdminPanelComponent));
+export default withRouter(AdminPanelComponent);

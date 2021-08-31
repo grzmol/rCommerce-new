@@ -31,12 +31,10 @@ const ProductDashboardHeaderComponent = (props) => {
         setDataReady(false);
         axios.post('/api/product', productData).then(resp => {
             setDataReady(true);
-            console.log('resppp', resp)
             if(resp.status === 200){
                 props.fetchAction();
                 closeModal();
             }
-            console.log(resp)
         })
     }
 

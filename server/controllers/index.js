@@ -4,6 +4,7 @@ import LoginController from "./loginController";
 import RegistrationController from "./registrationController";
 import MenuController from "./menuController";
 import ProductController from "./productController";
+import CategoryController from "./categoryController";
 
 export { 
     HomeController,
@@ -11,5 +12,6 @@ export {
     LoginController,
     RegistrationController,
     MenuController,
-    ProductController
+    ProductController,
+    CategoryController
 };

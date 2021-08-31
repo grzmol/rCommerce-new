@@ -12,8 +12,8 @@ const RegistrationController = () => {
             email : req.body.email,
             isAdmin: false
         };
-        console.log(user)
-        console.log('req', req)
+
+
         let newUser = new UserModel(user);
         newUser.save(err => {
             if(err) throw err;

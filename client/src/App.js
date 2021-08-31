@@ -15,7 +15,6 @@ import * as PropTypes from "prop-types";
 class App extends React.Component {
 
     render() {
-        let {history} = this.props;
         let authService = new AuthService();
 
         const pagesWithoutHeader = ['admin', 'login', 'register'];

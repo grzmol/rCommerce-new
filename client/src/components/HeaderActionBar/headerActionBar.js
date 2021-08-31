@@ -2,7 +2,7 @@ import React from 'react';
 import "./headerActionBar.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faShoppingCart, faSignInAlt, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons'
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 
 const HeaderActionBarComponent = ({history, ...props}) => {

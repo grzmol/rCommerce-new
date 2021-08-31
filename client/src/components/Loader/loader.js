@@ -3,7 +3,7 @@ import {CircularProgress} from "@material-ui/core";
 
 import "./loader.css";
 
-const LoaderComponent = (props) => {
+const LoaderComponent = () => {
 
     return (
         <div className={'page-loader'}>

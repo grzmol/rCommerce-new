@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import AuthService from "../services/authService";
 import {Link} from "react-router-dom";
 
-import { withTranslation } from 'react-i18next';
+import {withTranslation} from 'react-i18next';
 
 class LoginPage extends Component {
     constructor(props) {
