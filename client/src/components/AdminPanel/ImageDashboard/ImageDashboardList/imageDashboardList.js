@@ -6,13 +6,13 @@ import ConfirmationDialogComponent from "../../../ConfirmationDialog/confirmatio
 import _ from 'lodash';
 import axios from "axios";
 
-const CategoryDashboardListComponent = (props) => {
+const ImageDashboardListComponent = (props) => {
     const { t } = props;
     const [confirmationModal, setConfirmationModal] = useState(false);
-    const [categoriesToRemove, setCategoriesToRemove] = useState([]);
+    const [imagesToRemove, setImagesToRemove] = useState([]);
 
-    const deleteCategories = () => {
-        axios.post('/api/category/delete', {idsToRemove: categoriesToRemove}).then(resp => {
+    const deleteImages = () => {
+        axios.post('/api/image/delete', {idsToRemove: imagesToRemove}).then(resp => {
             if(resp.status === 200){
                 props.fetchAction();
                 closeConfirmationDialog();
@@ -32,19 +32,20 @@ const CategoryDashboardListComponent = (props) => {
             itemsToDelete.push(selectedItem._id);
         });
 
-        setCategoriesToRemove(itemsToDelete);
+        setImagesToRemove(itemsToDelete);
     }
     return (
         <div>
             <MaterialTable
-                title={t('MenuItem_Categories')}
+                title={t('TableHeader_Image')}
                 columns={[
-                    { title: t('CategoryTable_Name'), field: 'name' },
-                    { title: t('CategoryTable_DisplayNameEN'), field: 'displayNameEN' },
-                    { title: t('CategoryTable_DisplayNamePL'), field: 'displayNamePL' },
-                    { title: t('CategoryTable_Desc'), field: 'desc' }
+                    { title: '', field: 'img', render: item => <img src={item.imgBase64} alt="" border="1" height="300" width="300" />},
+                    { title: t('ImageTable_Type'), field: 'type' },
+                    { title: t('ImageTable_Name'), field: 'name' },
+                    { title: t('ImageTable_Description'), field: 'desc' },
+                    { title: t('ImageTable_ProductCode'), field: 'productCode' }
                 ]}
-                data={props.categories}
+                data={props.images}
                 options={{
                     selection: true
                 }}
@@ -58,10 +59,10 @@ const CategoryDashboardListComponent = (props) => {
                 ]}
                 localization={getTranslation()}
             />
-            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog} agree={deleteCategories}/>
+            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog} agree={deleteImages}/>
         </div>
 
     )
 };
 
-export default withTranslation()(CategoryDashboardListComponent);
+export default withTranslation()(ImageDashboardListComponent);

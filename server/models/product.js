@@ -8,7 +8,8 @@ let productSchema = new Schema({
     desc: String,
     price: Number,
     category: String,
-    image: String
+    image: String,
+    isFeatured: Boolean
 });
 
 export default mongoose.model('Product', productSchema);

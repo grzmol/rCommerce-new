@@ -3,8 +3,9 @@ import "./header.css";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBars} from '@fortawesome/free-solid-svg-icons'
 import HeaderActionBarComponent from "../HeaderActionBar/headerActionBar";
-import HamburgerMenuComponent from "../HamburgerMenu/hamburgerMenu";
+import HeaderMenuComponent from "../HeaderMenu/headerMenu";
 import _ from 'lodash';
+import NavMenuComponent from "../NavMenu/navMenu";
 
 const HeaderComponent = (props) => {
     const [backgroundClass, setBackgroundClass] = useState('');
@@ -54,7 +55,6 @@ const HeaderComponent = (props) => {
 
         <div className={'page-header-component ' + menuOpenClass} style={{display: displayHeader() ? 'block' : 'none'}}>
 
-            <HamburgerMenuComponent />
             <div className={'page-header ' + backgroundClass}>
                 <div className="page-header-section-left">
                     <div className="hamburger-menu-open">
@@ -68,6 +68,7 @@ const HeaderComponent = (props) => {
                     <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} logoutAction={props.history.logout}/>
                 </div>
             </div>
+            <HeaderMenuComponent />
         </div>
 
     );

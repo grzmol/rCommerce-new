@@ -35,7 +35,7 @@ class CategoryDashboardComponent extends React.Component {
                     this.state.dataReady ?
                         <div>
                             <CategoryDashboardHeaderComponent fetchAction={this.fetchData}/>
-                            <CategoryDashboardListComponent menuItems={this.state.menuItems} fetchAction={this.fetchData}/>
+                            <CategoryDashboardListComponent categories={this.state.categories} fetchAction={this.fetchData}/>
                         </div>
                         : <LoaderComponent />
                 }

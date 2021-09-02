@@ -58,5 +58,22 @@
   "ConfirmationDialog_Text": "Are you sure?",
   "ConfirmationDialog_Disagree": "Cancel",
   "ConfirmationDialog_Agree": "Agree",
-  "MenuItem_Categories": "Categories"
+  "MenuItem_Categories": "Categories",
+  "CategoryDashboard_NewItem": "New category",
+  "CategoryTable_Name": "Name",
+  "CategoryTable_Desc": "Description",
+  "CategoryTable_DisplayNamePL": "Display name PL",
+  "CategoryTable_DisplayNameEN": "Display name EN",
+  "CategoryDashboard_AddCategory": "Add category",
+  "Menu_NoItems": "No menu items found",
+  "TableHeader_Image": "Images",
+  "ImageTable_Name": "Name",
+  "ImageTable_Type": "Type",
+  "ImageTable_Description": "Description",
+  "ImageTable_ProductCode": "Product Code",
+  "MenuItem_Images": "Images",
+  "ImageType_Product": "Product",
+  "ImageType_Promo": "Promo",
+  "ImageDashboard_NewItem": "New image",
+  "ImageDashboard_AddImage": "Add image"
 }

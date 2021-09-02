@@ -8,6 +8,7 @@ import OrdersDashboardComponent from "./OrdersDashboard/ordersDashboard";
 import CustomersDashboardComponent from "./CustomersDashboard/customersDashboard";
 import MenuDashboardComponent from "./MenuDashboard/menuDashboard";
 import CategoryDashboardComponent from "./CategoriesDashboard/categoriesDashboard";
+import ImageDashboardComponent from "./ImageDashboard/imageDashboard";
 
 class AdminPanelComponent extends React.Component {
 
@@ -27,6 +28,7 @@ class AdminPanelComponent extends React.Component {
                     <Route path={`${this.props.match.path}/category`} component={CategoryDashboardComponent} />
                     <Route path={`${this.props.match.path}/customers`} component={CustomersDashboardComponent} />
                     <Route path={`${this.props.match.path}/menu`} component={MenuDashboardComponent} />
+                    <Route path={`${this.props.match.path}/images`} component={ImageDashboardComponent} />
                 </div>
             </div>
         );

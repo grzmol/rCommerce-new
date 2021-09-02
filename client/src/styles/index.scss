@@ -6,12 +6,15 @@
   width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 body {
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
   color: $color-text-dark;
   background: $color-background;
+  overflow-x: hidden;
+
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Roboto', sans-serif;

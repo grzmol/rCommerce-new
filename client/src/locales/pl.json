@@ -64,5 +64,16 @@
   "CategoryTable_Desc": "Opis",
   "CategoryTable_DisplayNamePL": "Wyświetlana nazwa PL",
   "CategoryTable_DisplayNameEN": "Wyświetlana nazwa EN",
-  "CategoryDashboard_AddCategory": "Dodaj kategorię"
+  "CategoryDashboard_AddCategory": "Dodaj kategorię",
+  "Menu_NoItems": "Nie znaleziono żadnego elementu menu.",
+  "TableHeader_Image": "Obrazki",
+  "ImageTable_Name": "Nazwa",
+  "ImageTable_Type": "Rodzaj",
+  "ImageTable_Description": "Opis",
+  "ImageTable_ProductCode": "Kod produktu",
+  "MenuItem_Images": "Obrazy",
+  "ImageType_Product": "Produkt",
+  "ImageType_Promo": "Promocja",
+  "ImageDashboard_NewItem": "Nowy obraz",
+  "ImageDashboard_AddImage": "Dodaj obraz"
 }
