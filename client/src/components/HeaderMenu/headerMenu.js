@@ -1,13 +1,16 @@
 import React from 'react';
-import "./hamburgerMenu.css";
+import "./headerMenu.css";
 import axios from "axios";
 import LoaderComponent from "../Loader/loader";
 import MenuItem from '../MenuItem/menuItem'
+import _ from 'lodash';
 
-export default class HamburgerMenuComponent extends React.Component {
+
+import { withTranslation } from "react-i18next";
+
+class HeaderMenuComponent extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             menuItems: [],
             dataReady: false
@@ -17,10 +20,12 @@ export default class HamburgerMenuComponent extends React.Component {
 
     fetchMenuItems() {
         axios.get('/api/menu').then(resp => {
-            this.setState({
-                menuItems: resp.data,
-                dataReady: true
-            });
+            if(_.isArray(resp.data)){
+                this.setState({
+                    menuItems: resp.data,
+                    dataReady: true
+                });
+            }
         });
     }
 
@@ -30,6 +35,7 @@ export default class HamburgerMenuComponent extends React.Component {
 
 
     render() {
+        const { t } = this.props;
         return (
             <div className="hamburger-menu">
                 {
@@ -45,3 +51,5 @@ export default class HamburgerMenuComponent extends React.Component {
         )
     }
 };
+
+export default withTranslation()(HeaderMenuComponent);

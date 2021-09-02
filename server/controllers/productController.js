@@ -21,7 +21,8 @@ const ProductController = () => {
             desc: req.body.desc,
             price: req.body.price,
             category: req.body.category,
-            image: req.body.image
+            image: req.body.image,
+            isFeatured: req.body.isFeatured
         };
         let newProduct = new ProductModel(product);
         await newProduct.save(err => {

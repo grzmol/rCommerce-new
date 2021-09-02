@@ -14,7 +14,8 @@ import {
     ProductController,
     RegistrationController,
     UsersController,
-    CategoryController
+    CategoryController,
+    ImageController
 } from "./server/controllers";
 import {AuthVerifyMiddleware} from "./server/middlewares";
 
@@ -36,8 +37,7 @@ if (process.env.NODE_ENV === "production") console.log("PRODUCTION");
 if (process.env.NODE_ENV === "development") {
     app.use(logger("dev"));
 }
-
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
@@ -48,12 +48,14 @@ app.use(cors());
 app.use("/auth/login", LoginController(app));
 app.use("/auth/register", RegistrationController());
 
-app.use('/api', AuthVerifyMiddleware(app));
+//app.use('/api', AuthVerifyMiddleware(app));
 app.use("/api/home", HomeController(io));
 app.use("/api/users", UsersController());
-app.use("/api/menu", MenuController());
 app.use("/api/product", ProductController());
 app.use("/api/category", CategoryController());
+
+app.use("/api/menu", MenuController());
+app.use("/api/image", ImageController());
 
 
 // express will serve up index.html if it doesn't recognize the route
