@@ -5,7 +5,12 @@ let router = express.Router();
 const ProductController = () => {
 
     router.get('/', async (req, res) => {
-        let products = await ProductModel.find({});
+        let products = await ProductModel.find(req.query.isFeatured ? {isFeatured: true} : {});
+        res.json(products);
+    });
+
+    router.post('/delete', async (req, res) => {
+        let products = await ProductModel.deleteMany({"_id": {$in: req.body.idsToRemove}});
         res.json(products);
     });
 

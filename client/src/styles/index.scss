@@ -2,17 +2,18 @@
 @import "colors";
 #root {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  padding-bottom: 160px;
 }
 body {
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
   color: $color-text-dark;
-  background: $color-background;
+  background: white;
   overflow-x: hidden;
 
 }
