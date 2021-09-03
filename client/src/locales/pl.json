@@ -75,5 +75,8 @@
   "ImageType_Product": "Produkt",
   "ImageType_Promo": "Promocja",
   "ImageDashboard_NewItem": "Nowy obraz",
-  "ImageDashboard_AddImage": "Dodaj obraz"
+  "ImageDashboard_AddImage": "Dodaj obraz",
+  "ProductTable_IsFeatured": "Wyróżniony",
+  "ProductTable_Category": "Kategoria",
+  "FeaturedProducts_Title": "Wyróżnione produkty"
 }

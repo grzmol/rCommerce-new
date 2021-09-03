@@ -31,7 +31,7 @@ export default class HeroImageComponent extends React.Component {
     render() {
         let promoImg = _.isArray(this.state.promoImages) && this.state.promoImages.length > 0 ? this.state.promoImages[0] : {};
         return (
-            <LazyHero imageSrc={promoImg.imgBase64} opacity="0.2">
+            <LazyHero imageSrc={promoImg.imgBase64} opacity="0.4">
                 <h1>{promoImg.desc}</h1>
             </LazyHero>
         )

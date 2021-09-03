@@ -1,0 +1,37 @@
+@import "../../styles/colors";
+
+.featured-products-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  & > a {
+    text-decoration: none;
+    color: $color-text-dark;
+  }
+  .featured-products-item {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    padding: 15px;
+    .item-image {
+      width: 200px;
+      & > img {
+        max-width: 200px;
+        height: auto;
+        margin: 0 auto;
+      }
+    }
+
+    .item-name {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    &:hover {
+      -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.11);
+      box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.11);
+      border-radius: 10px;
+    }
+  }
+}

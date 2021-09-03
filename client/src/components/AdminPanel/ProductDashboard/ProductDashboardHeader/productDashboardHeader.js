@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import './productDashboardHeader.css';
-import {TextField} from "@material-ui/core";
+import {Checkbox, FormControlLabel, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
 import _ from 'lodash';
 import axios from "axios";
 import LoaderComponent from "../../../Loader/loader";
@@ -18,6 +18,9 @@ const ProductDashboardHeaderComponent = (props) => {
     const [productData, setProductData] = React.useState({});
     const [isImageUploading, setIsImageUploading] = React.useState(false);
     const [dataReady, setDataReady] = React.useState(true);
+    const [isFeatured, setIsFeatured] = React.useState(true);
+    const [category, setCategory] = React.useState(props.categories && props.categories.length > 0 ? props.categories[0].name : '');
+    const [currPrice, setCurrPrice] = React.useState(1);
 
     const openModal = () => {
         setOpen(true);
@@ -29,6 +32,10 @@ const ProductDashboardHeaderComponent = (props) => {
     const saveProduct = (event) => {
         event.preventDefault();
         setDataReady(false);
+        setProductData(_.extend(productData, {
+            category: category,
+            isFeatured: isFeatured
+        }));
         axios.post('/api/product', productData).then(resp => {
             setDataReady(true);
             if(resp.status === 200){
@@ -70,6 +77,28 @@ const ProductDashboardHeaderComponent = (props) => {
         );
     }
 
+    const handleCategoryChange = (event) => {
+        let categoryInput = event.target.value;
+        setCategory(categoryInput);
+    };
+
+    const handleCheckboxChange = (event) => {
+        setIsFeatured(event.target.checked);
+    };
+
+    const validateAndSaveQty = (event) => {
+        let currValue = event.target.value;
+
+        if(_.isNumber(Number(currValue)) && currValue > 0){
+            setProductData(_.extend(productData, {
+                price: currValue
+            }));
+            setCurrPrice(currValue);
+        }else{
+            event.target.value = currPrice;
+        }
+
+    }
     return (
         <div className={'product-dashboard_header'}>
             <Button variant="contained" color="primary" onClick={openModal}>{t('ProductDashboard_NewProduct')}</Button>
@@ -92,6 +121,22 @@ const ProductDashboardHeaderComponent = (props) => {
                                     <input type="file" id="img" name="img" accept="image/*" onChange={handleImageChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
+                                    <InputLabel id="demo-simple-select-label">{t('ProductTable_Category')}</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={category}
+                                        onChange={handleCategoryChange}
+                                        variant={'outlined'}
+                                        fullWidth
+                                    >
+                                        {
+                                            props.categories.map(item => (<MenuItem key={item.name} value={item.name}>{item.name}</MenuItem>))
+                                        }
+
+                                    </Select>
+                                </Grid>
+                                <Grid item xs={12}>
                                     <TextField name="name" required id="standard-required" label={t('ProductTable_Name')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
@@ -112,8 +157,21 @@ const ProductDashboardHeaderComponent = (props) => {
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField name="price" required id="standard-required" label={t('ProductTable_Price')}
-                                               variant="outlined" fullWidth onInput={handleInputChange}/>
+                                    <TextField name="price" type="text" data-old="" required id="standard-required" label={t('ProductTable_Price')}
+                                               variant="outlined" fullWidth onInput={validateAndSaveQty}/>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <FormControlLabel
+                                        control={
+                                            <Checkbox
+                                                checked={isFeatured}
+                                                onChange={handleCheckboxChange}
+                                                name="checkedB"
+                                                color="primary"
+                                            />
+                                        }
+                                        label={t('ProductTable_IsFeatured')}
+                                    />
                                 </Grid>
                                 <Grid item xs={12} style={{textAlign: 'center'}}>
                                     <Button type="submit" variant="contained" color="primary" disabled={isImageUploading}>
