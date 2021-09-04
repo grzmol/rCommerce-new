@@ -6,6 +6,7 @@ import MenuController from "./menuController";
 import ProductController from "./productController";
 import CategoryController from "./categoryController";
 import ImageController from "./imageController";
+import CartController from "./cartController";
 
 export { 
     HomeController,
@@ -15,5 +16,6 @@ export {
     MenuController,
     ProductController,
     CategoryController,
-    ImageController
+    ImageController,
+    CartController
 };
