@@ -21,13 +21,11 @@ const ProductController = () => {
 
     router.post('/', async (req, res) => {
         let product = {
-            name: req.body.name,
-            productCode: req.body.productCode,
-            desc: req.body.desc,
-            price: req.body.price,
-            category: req.body.category,
-            image: req.body.image,
-            isFeatured: req.body.isFeatured
+            user: String,
+            products: [{type: String}],
+            totalPrice: Number,
+            totalQuantity: Number,
+            isActive: Boolean
         };
         let newProduct = new ProductModel(product);
         await newProduct.save(err => {

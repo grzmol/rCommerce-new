@@ -42,7 +42,7 @@
   "ProductTable_toolbar.searchTooltip": "Szukaj",
   "ProductTable_toolbar.searchPlaceholder": "Szukaj",
   "ProductTable_Name": "Nazwa",
-  "ProductTable_Price": "Cena",
+  "ProductTable_Price": "Cena (PLN)",
   "ProductTable_Code": "Kod produktu",
   "ProductTable_Desc": "Opis",
   "ProductDashboard_NewProduct": "Nowy produkt",
@@ -78,5 +78,6 @@
   "ImageDashboard_AddImage": "Dodaj obraz",
   "ProductTable_IsFeatured": "Wyróżniony",
   "ProductTable_Category": "Kategoria",
-  "FeaturedProducts_Title": "Wyróżnione produkty"
+  "FeaturedProducts_Title": "Wyróżnione produkty",
+  "AddToCart_Success": "Produkt dodano do koszyka!"
 }

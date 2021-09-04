@@ -1,0 +1,43 @@
+@import "../../styles/colors";
+
+.product-grid-item {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  padding: 15px;
+  position: relative;
+  & > a {
+    text-decoration: none;
+    color: $color-text-dark;
+  }
+  .item-image {
+    width: 200px;
+    & > img {
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
+
+  .item-name {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 40px;
+  }
+  .item-add-to {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+  &:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.11);
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.11);
+    border-radius: 10px;
+  }
+}

@@ -5,15 +5,18 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 import HeaderActionBarComponent from "../HeaderActionBar/headerActionBar";
 import HeaderMenuComponent from "../HeaderMenu/headerMenu";
 import _ from 'lodash';
-import NavMenuComponent from "../NavMenu/navMenu";
+import axios from "axios";
 
 const HeaderComponent = (props) => {
     const [backgroundClass, setBackgroundClass] = useState('');
     const [menuOpenClass, setMenuOpenClass] = useState('');
-
+    const [userCart, setUserCart] = useState({});
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
+        if(_.isEmpty(userCart)){
+            fetchCart();
+        }
     });
 
 
@@ -27,6 +30,21 @@ const HeaderComponent = (props) => {
                 setBackgroundClass('');
             }
         }
+    }
+
+    const fetchCart = () => {
+        axios.post('/api/cart', {user: props.user.username}).then(resp => {
+            if (resp.status === 200 && resp.data){
+                setUserCart(resp.data);
+            }else{
+                let cartData = {
+                    user: props.user.username,
+                }
+                axios.post('/api/cart/new', cartData).then(resp => {
+                    setUserCart(resp.data);
+                });
+            }
+        });
     }
 
     const toggleHamburgerMenu = () => {
@@ -51,6 +69,9 @@ const HeaderComponent = (props) => {
         return result;
     }
 
+    window.actions = {};
+    window.actions.fetchHeaderInfo = fetchCart;
+
     return (
 
         <div className={'page-header-component ' + menuOpenClass} style={{display: displayHeader() ? 'block' : 'none'}}>
@@ -65,7 +86,7 @@ const HeaderComponent = (props) => {
                     <div className="page-logo"></div>
                 </div>
                 <div className="page-header-section-right">
-                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} logoutAction={props.history.logout}/>
+                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} userCart={userCart} logoutAction={props.history.logout}/>
                 </div>
             </div>
             <HeaderMenuComponent />

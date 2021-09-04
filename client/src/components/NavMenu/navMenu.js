@@ -32,7 +32,7 @@ export default class NavMenuComponent extends React.Component {
             <div className="nav-menu-container">
                 <Container>
                     {this.state.menuItems.map( item => (
-                        <div className="nav-menu-item">
+                        <div className="nav-menu-item" key={item.name}>
                             <Link to={'/productList?category=' + item.name.toLowerCase()}>{item.name}</Link>
                         </div>
                     ))}

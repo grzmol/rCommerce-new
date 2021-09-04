@@ -5,6 +5,7 @@ import {Container} from "@material-ui/core";
 
 import "./featuredProducts.css";
 import {Link} from "react-router-dom";
+import ProductGridItem from "../ProductGridItem/productGridItem";
 
 class FeaturedProductsComponent extends React.Component {
     constructor(props) {
@@ -15,7 +16,6 @@ class FeaturedProductsComponent extends React.Component {
             products: []
         }
     }
-
     componentDidMount() {
         axios.get('/api/product?isFeatured=true').then(resp => {
             if(resp.status === 200 && resp.data){
@@ -37,19 +37,7 @@ class FeaturedProductsComponent extends React.Component {
                     <h2>{t('FeaturedProducts_Title')}</h2>
                     <div className="featured-products-content">
                         {this.state.products.map( item => (
-                            <Link to={'/product/' + item.productCode} className="featured-products-item">
-                                <div>
-                                    <div className="item-image">
-                                        <img src={item.image} />
-                                    </div>
-                                    <div className="item-name">
-                                        {item.name}
-                                    </div>
-                                    <div className="item-price">
-                                        {item.price}&nbsp;PLN
-                                    </div>
-                                </div>
-                            </Link>
+                            <ProductGridItem key={item.productCode} currentUser={this.props.currentUser} product={item} />
                         ))}
                     </div>
                 </div>
