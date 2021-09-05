@@ -79,5 +79,13 @@
   "ProductTable_IsFeatured": "Wyróżniony",
   "ProductTable_Category": "Kategoria",
   "FeaturedProducts_Title": "Wyróżnione produkty",
-  "AddToCart_Success": "Produkt dodano do koszyka!"
+  "AddToCart_Success": "Produkt dodano do koszyka!",
+  "LastViewedProducts_Title": "Ostatnio przeglądane",
+  "ProductDetail_Description": "Opis",
+  "ProductDetail_Price": "Cena",
+  "ProductDetail_Quantity": "Ilość",
+  "ProductDetail_Code": "Kod produktu",
+  "ProductDetail_ShortDescription": "Krótki opis",
+  "Button_AddToCart": "Dodaj do koszyka",
+  "Breadcrumb_Home": "Home"
 }

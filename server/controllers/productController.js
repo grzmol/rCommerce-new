@@ -15,17 +15,25 @@ const ProductController = () => {
     });
 
     router.get('/:productCode', async (req, res) => {
-        let product = await ProductModel.findOne({name: req.params.productCode });
-        res.json({success: true, data: product});
+        console.log('dfff', req.params.productCode);
+        let product = await ProductModel.findOne({productCode: req.params.productCode });
+        res.json( { product } );
+    });
+
+    router.post('/getMany', async (req, res) => {
+        let products = await ProductModel.find({_id: {$in: req.body.productIds} });
+        res.json(products);
     });
 
     router.post('/', async (req, res) => {
         let product = {
-            user: String,
-            products: [{type: String}],
-            totalPrice: Number,
-            totalQuantity: Number,
-            isActive: Boolean
+            name: req.body.name,
+            productCode: req.body.productCode,
+            desc: req.body.desc,
+            price: req.body.price,
+            category: req.body.category,
+            image: req.body.image,
+            isFeatured: req.body.isFeatured
         };
         let newProduct = new ProductModel(product);
         await newProduct.save(err => {

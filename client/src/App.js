@@ -11,6 +11,7 @@ import ProductListPage from "./pages/productListPage";
 import AccountPage from "./pages/accountPage";
 import FooterComponent from "./components/Footer/footer";
 import * as PropTypes from "prop-types";
+import ProductDetailsPage from "./pages/productDetailsPage";
 
 class App extends React.Component {
 
@@ -32,6 +33,7 @@ class App extends React.Component {
                         <Route path="/cart" component={CartPage}/>
                         <Route path="/productList" component={ProductListPage}/>
                         <Route path="/account" component={AccountPage}/>
+                        <Route path="/product/:productCode" component={ProductDetailsPage} />
                     </Switch>
                     <FooterComponent pagesWithoutFooter={pagesWithoutFooter}/>
                 </div>

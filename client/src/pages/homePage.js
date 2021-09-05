@@ -4,6 +4,7 @@ import NavMenuComponent from "../components/NavMenu/navMenu";
 import FeaturedProductsComponent from "../components/FeaturedProducts/featuredProducts";
 
 import AuthService from "../services/authService";
+import LastViewedProductsComponent from "../components/LastViewedProducts/lastViewedProducts";
 const HomePage = () => {
     const auth = new AuthService();
     return (

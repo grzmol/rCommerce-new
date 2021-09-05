@@ -6,6 +6,7 @@ import HeaderActionBarComponent from "../HeaderActionBar/headerActionBar";
 import HeaderMenuComponent from "../HeaderMenu/headerMenu";
 import _ from 'lodash';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const HeaderComponent = (props) => {
     const [backgroundClass, setBackgroundClass] = useState('');
@@ -83,7 +84,9 @@ const HeaderComponent = (props) => {
                     </div>
                 </div>
                 <div className="page-header-section-center">
-                    <div className="page-logo"></div>
+                    <Link to="/">
+                        <div className="page-logo"></div>
+                    </Link>
                 </div>
                 <div className="page-header-section-right">
                     <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} userCart={userCart} logoutAction={props.history.logout}/>

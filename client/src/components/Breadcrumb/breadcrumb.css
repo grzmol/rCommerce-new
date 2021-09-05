@@ -1,0 +1,9 @@
+.breadcrumb > span:last-child a {
+  color: gray;
+  pointer-events: none; }
+
+.breadcrumb a {
+  text-decoration: none;
+  color: #3b3b3b; }
+  .breadcrumb a:hover {
+    text-decoration: underline; }

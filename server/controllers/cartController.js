@@ -21,12 +21,12 @@ const CartController = () => {
             })[0] || {};
 
             if(!_.isEmpty(existingItemForProduct)){
-                existingItemForProduct.quantity += 1;
+                existingItemForProduct.quantity += Number(req.body.quantity);
                 existingItemForProduct.itemPrice = existingItemForProduct.quantity * productToAdd.price;
             }else{
                 let newCartItem = {
                     product: productToAdd._id,
-                    quantity: 1,
+                    quantity: Number(req.body.quantity),
                     itemPrice: productToAdd.price
                 }
                 userCart.cartItems.push(newCartItem);
