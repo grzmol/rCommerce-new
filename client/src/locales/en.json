@@ -79,5 +79,6 @@
   "ProductTable_IsFeatured": "Is Featured",
   "ProductTable_Category": "Category",
   "FeaturedProducts_Title": "Featured products",
-  "AddToCart_Success": "Successfully added product to cart!"
+  "AddToCart_Success": "Successfully added product to cart!",
+  "LastViewedProducts_Title": "Last viewed products"
 }

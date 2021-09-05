@@ -1,0 +1,20 @@
+.awssld {
+  --content-background-color: $color-background !important;
+  z-index: 3; }
+
+.product-details-wrapper {
+  margin-top: 100px; }
+  .product-details-wrapper .carousel-image-wrapper {
+    width: inherit;
+    height: inherit;
+    text-align: center; }
+    .product-details-wrapper .carousel-image-wrapper .carousel-image {
+      width: auto;
+      height: 100%; }
+  .product-details-wrapper .section-label {
+    font-weight: bold; }
+  .product-details-wrapper .product-details-desc {
+    min-height: 150px;
+    padding-bottom: 20px; }
+  .product-details-wrapper .last-viewed-products-container {
+    margin: 200px -15px 0; }
