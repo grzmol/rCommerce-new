@@ -1,0 +1,12 @@
+@import "../../styles/colors";
+
+.cart-container {
+  margin: 100px 0;
+  .cart-items-table {
+    border-top: 1px solid $color-light-gray;
+  }
+  .cart-item-image {
+    width: 100%;
+    height: auto;
+  }
+}

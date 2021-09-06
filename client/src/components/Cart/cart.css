@@ -1,0 +1,7 @@
+.cart-container {
+  margin: 100px 0; }
+  .cart-container .cart-items-table {
+    border-top: 1px solid #dfdfdf; }
+  .cart-container .cart-item-image {
+    width: 100%;
+    height: auto; }

@@ -12,6 +12,7 @@ const HomePage = () => {
             <HeroImageComponent />
             <NavMenuComponent />
             <FeaturedProductsComponent currentUser={auth.getProfile()} />
+            <LastViewedProductsComponent />
         </div>
     );
 }

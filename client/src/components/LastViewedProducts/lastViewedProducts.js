@@ -23,9 +23,8 @@ class LastViewedProductsComponent extends React.Component {
 
         axios.post('/api/product/getMany', {productIds: productIds}).then(resp => {
             if(resp.status === 200 && resp.data){
-                this.setState({products: resp.data});
+                this.setState({products: resp.data, dataReady: true});
             }
-            this.setState({dataReady: true});
         }).catch(err => {
             console.error(err)
         });
@@ -36,7 +35,7 @@ class LastViewedProductsComponent extends React.Component {
         const {t} = this.props;
 
         return (
-            <Container>
+            <Container style={{display: this.state.dataReady ? 'block' : 'none'}}>
                 <div className="last-viewed-products-container">
                     <h2>{t('LastViewedProducts_Title')}</h2>
                     <div className="last-viewed-products-content">

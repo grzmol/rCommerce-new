@@ -15,7 +15,6 @@ const ProductController = () => {
     });
 
     router.get('/:productCode', async (req, res) => {
-        console.log('dfff', req.params.productCode);
         let product = await ProductModel.findOne({productCode: req.params.productCode });
         res.json( { product } );
     });

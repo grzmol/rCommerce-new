@@ -9,71 +9,30 @@ import MuiAlert from '@material-ui/lab/Alert';
 import _ from "lodash";
 
 import { withTranslation } from "react-i18next";
+import {addToCart, fetchCart} from "../../actions/cartActions";
+import {connect} from "react-redux";
 
 class ProductGridItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showAddToMessage: false,
-            showBackdrop: false
-        };
         this.addToCart = this.addToCart.bind(this);
-        this.showAddToMessage = this.showAddToMessage.bind(this);
-        this.hideAddToMessage = this.hideAddToMessage.bind(this);
-
     }
 
     addToCart(event) {
         let currentUser = this.props.currentUser;
-        this.setState({showBackdrop: true});
-        if(currentUser.username){
+        if(currentUser.username) {
             let productToAdd = {
                 user: currentUser.username,
                 product: event.currentTarget.dataset.product,
                 quantity: 1
-            };
-            axios.post('/api/cart/addItem', productToAdd).then(resp => {
-                if(resp.status === 200 && !_.isEmpty(resp.data)){
-                    this.setState({cart: resp.data});
-                    this.showAddToMessage();
-                    window.actions.fetchHeaderInfo();
-                }
-                this.setState({showBackdrop: false});
-            }).catch(err => {
-                console.error(err)
-            })
+            }
+            this.props.addToCart(productToAdd);
         }
-    }
-
-
-    showAddToMessage(){
-        this.setState({showAddToMessage: true});
-        setTimeout(this.hideAddToMessage, 2000);
-
-    }
-
-    hideAddToMessage(){
-        this.setState({showAddToMessage: false});
     }
 
     render() {
         const item = this.props.product;
         const {t} = this.props;
-
-        const addToCartMessageStyle = {
-            position: 'fixed',
-            top: '85px',
-            right: this.state.showAddToMessage ? '20px' : '-500px',
-            transition: 'right 1s'
-        }
-        const backdropStyle = {
-            zIndex: 6,
-            color: '#fff'
-        }
-        function Alert(props) {
-            return <MuiAlert elevation={6} variant="filled" {...props} style={addToCartMessageStyle}/>;
-        }
-
         return (
             <div>
                 <div className="product-grid-item">
@@ -92,15 +51,21 @@ class ProductGridItem extends React.Component {
                         <AddShoppingCartIcon />
                     </Fab>
                 </div>
-                <Alert severity="success">{t('AddToCart_Success')}</Alert>
-                <Backdrop style={backdropStyle} open={this.state.showBackdrop}>
-                    <CircularProgress color="inherit" />
-                </Backdrop>
             </div>
-
 
         )
     }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        cart: state.cart
+    }
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (itemToAdd)=> dispatch(addToCart(itemToAdd))
+    }
 };
 
-export default withTranslation()(ProductGridItem);
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(ProductGridItem));

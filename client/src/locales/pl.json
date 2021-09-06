@@ -87,5 +87,8 @@
   "ProductDetail_Code": "Kod produktu",
   "ProductDetail_ShortDescription": "Krótki opis",
   "Button_AddToCart": "Dodaj do koszyka",
-  "Breadcrumb_Home": "Home"
+  "Breadcrumb_Home": "Home",
+  "CartPage_Header": "Koszyk",
+  "CartPage_EmptyCart": "Twój koszyk jest pusty",
+  "CartPage_Update": "Zapisz"
 }
