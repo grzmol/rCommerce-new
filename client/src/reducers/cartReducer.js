@@ -36,6 +36,18 @@ const cartReducer = (state = initState, action) => {
             return {...state, fetching: true}
         case types.LOADING_OFF:
             return {...state, fetching: false}
+        case types.REMOVE_CART_ITEM_REQUEST:
+            return {...state, fetching: true};
+        case types.REMOVE_CART_ITEM_SUCCESS:
+            return {...state, fetching: false};
+        case types.REMOVE_CART_ITEM_FAIL:
+            return {...state, fetching: false, error: action.payload}
+        case types.UPDATE_ITEM_QUANTITY_REQUEST:
+            return {...state, fetching: true};
+        case types.UPDATE_ITEM_QUANTITY_SUCCESS:
+            return {...state, fetching: false};
+        case types.UPDATE_ITEM_QUANTITY_FAIL:
+            return {...state, fetching: false, error: action.payload}
         default:
             return state;
     }

@@ -12,6 +12,8 @@ import AccountPage from "./pages/accountPage";
 import FooterComponent from "./components/Footer/footer";
 import * as PropTypes from "prop-types";
 import ProductDetailsPage from "./pages/productDetailsPage";
+import CheckoutPage from "./pages/checkoutPage";
+import OrderConfirmationPage from "./pages/orderConfirmation";
 
 class App extends React.Component {
 
@@ -34,6 +36,8 @@ class App extends React.Component {
                         <Route path="/productList" component={ProductListPage}/>
                         <Route path="/account" component={AccountPage}/>
                         <Route path="/product/:productCode" component={ProductDetailsPage} />
+                        <Route path="/checkout" component={CheckoutPage} />
+                        <Route path="/orderConfirmation" component={OrderConfirmationPage} />
                     </Switch>
                     <FooterComponent pagesWithoutFooter={pagesWithoutFooter}/>
                 </div>

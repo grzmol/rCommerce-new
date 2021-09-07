@@ -7,7 +7,6 @@ import "./lastViewedProducts.css";
 import ProductGridItem from "../ProductGridItem/productGridItem";
 
 
-
 class LastViewedProductsComponent extends React.Component {
     constructor(props) {
         super(props);

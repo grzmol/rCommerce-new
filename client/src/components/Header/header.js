@@ -7,27 +7,35 @@ import HeaderMenuComponent from "../HeaderMenu/headerMenu";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
 
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import {fetchCart} from "../../actions/cartActions";
 import {Backdrop, CircularProgress} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 
 import {withTranslation} from "react-i18next";
+import { withRouter } from 'react-router-dom';
 
-const HeaderComponent = (props) => {
+const HeaderComponent = ({history, ...props}) => {
     const [backgroundClass, setBackgroundClass] = useState('');
     const [menuOpenClass, setMenuOpenClass] = useState('');
+    const [historyListenerEnabled, setHistoryListenerEnabled] = useState(false);
+    const [initCartFetched, setInitCartFetched] = useState(false);
     const {t} = props;
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-
-        if(_.isEmpty(props.cart)){
+        if(!initCartFetched){
+            setInitCartFetched(true);
             props.fetchCart();
         }
+    });
 
-    }, [props.cart]);
-
+    if(!historyListenerEnabled){
+        history.listen(() => {
+            props.fetchCart();
+        });
+        setHistoryListenerEnabled(true);
+    }
 
     const handleScroll = () => {
         if (window.pageYOffset > 0) {
@@ -93,7 +101,7 @@ const HeaderComponent = (props) => {
                     </Link>
                 </div>
                 <div className="page-header-section-right">
-                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} userCart={props.cart} logoutAction={props.history.logout}/>
+                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} userCart={props.cart} logoutAction={history.logout}/>
                 </div>
             </div>
             <HeaderMenuComponent />
@@ -122,4 +130,4 @@ function mapDispatchToProps(dispatch){
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(HeaderComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withRouter(HeaderComponent)));

@@ -9,4 +9,19 @@
     width: 100%;
     height: auto;
   }
+  #qty-input {
+    height: 0;
+  }
+  .cart-footer {
+    width: 100%;
+  }
+  .cart-footer-content {
+    float: right;
+    margin-top: 40px;
+    text-align: right;
+    padding: 20px;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    min-height: 100px;
+  }
 }

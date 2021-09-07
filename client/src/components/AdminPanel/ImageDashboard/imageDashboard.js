@@ -6,7 +6,6 @@ import ImageDashboardListComponent from "./ImageDashboardList/imageDashboardList
 import ImageDashboardHeaderComponent from "./ImageDashboardHeader/imageDashboardHeader";
 
 
-
 export default class ImageDashboardComponent extends React.Component {
     constructor(props) {
         super(props);

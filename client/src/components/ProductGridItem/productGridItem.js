@@ -2,14 +2,11 @@ import React from 'react';
 
 import "./productGridItem.css";
 import {Link} from "react-router-dom";
-import {Backdrop, CircularProgress, Fab} from "@material-ui/core";
+import {Fab} from "@material-ui/core";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import axios from "axios";
-import MuiAlert from '@material-ui/lab/Alert';
-import _ from "lodash";
 
-import { withTranslation } from "react-i18next";
-import {addToCart, fetchCart} from "../../actions/cartActions";
+import {withTranslation} from "react-i18next";
+import {addToCart} from "../../actions/cartActions";
 import {connect} from "react-redux";
 
 class ProductGridItem extends React.Component {

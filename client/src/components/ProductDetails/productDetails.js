@@ -3,7 +3,7 @@ import axios from "axios";
 
 import {withTranslation} from "react-i18next";
 import {Container, Divider, TextField} from "@material-ui/core";
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 import "./productDetails.css";
 import AwesomeSlider from "react-awesome-slider";
@@ -15,6 +15,8 @@ import BreadcrumbComponent from "../Breadcrumb/breadcrumb";
 import MuiAlert from "@material-ui/lab/Alert";
 import LastViewedProductsComponent from "../LastViewedProducts/lastViewedProducts";
 import LoaderComponent from "../Loader/loader";
+import {addToCart} from "../../actions/cartActions";
+import {connect} from "react-redux";
 
 class ProductDetailsComponent extends React.Component {
     constructor(props) {
@@ -75,22 +77,13 @@ class ProductDetailsComponent extends React.Component {
     addToCart(event) {
         let currentUser = this.props.user;
         let product = this.state.product;
-        this.setState({dataReady: false});
         if(currentUser.username){
             let productToAdd = {
                 user: currentUser.username,
                 product: product._id,
                 quantity: this.state.productQuantity
             };
-            axios.post('/api/cart/addItem', productToAdd).then(resp => {
-                if(resp.status === 200 && !_.isEmpty(resp.data)){
-                    this.showAddToMessage();
-                    window.actions.fetchHeaderInfo();
-                }
-                this.setState({dataReady: true});
-            }).catch(err => {
-                console.error(err)
-            })
+            this.props.addToCart(productToAdd);
         }
     }
 
@@ -183,5 +176,15 @@ class ProductDetailsComponent extends React.Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        cart: state.cart
+    }
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (itemToAdd)=> dispatch(addToCart(itemToAdd))
+    }
+};
 
-export default withTranslation()(withRouter(ProductDetailsComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withRouter(ProductDetailsComponent)));

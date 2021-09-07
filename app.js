@@ -15,11 +15,12 @@ import {
     RegistrationController,
     UsersController,
     CategoryController,
-    ImageController, CartController
+    ImageController, CartController, OrderController
 } from "./server/controllers";
 import {AuthVerifyMiddleware} from "./server/middlewares";
 
 import config from "./server/config";
+import StripeController from "./server/controllers/stripeController";
 
 
 const app = express();
@@ -57,6 +58,8 @@ app.use("/api/category", CategoryController());
 app.use("/api/menu", MenuController());
 app.use("/api/image", ImageController());
 app.use("/api/cart", CartController());
+app.use("/api/payment", StripeController());
+app.use("/api/order", OrderController());
 
 
 // express will serve up index.html if it doesn't recognize the route

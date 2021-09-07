@@ -2,7 +2,7 @@ import React from 'react';
 
 import './adminPanelMenu.css'
 
-import {faBars, faBoxes, faFolderOpen, faShoppingBasket, faUsers, faImage} from '@fortawesome/free-solid-svg-icons'
+import {faBars, faBoxes, faFolderOpen, faImage, faShoppingBasket, faUsers} from '@fortawesome/free-solid-svg-icons'
 import MenuItemComponent from "../MenuItem/menuItem";
 import {Divider} from "@material-ui/core";
 
