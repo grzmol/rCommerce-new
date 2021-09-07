@@ -18,7 +18,8 @@ const LoginController = (app) => {
                 if(!err && isMatch){
                     const payload = {
                         isAdmin: user.isAdmin,
-                        username: user.username
+                        username: user.username,
+                        email: user.email
                     };
                     let token = jwt.sign(payload, app.get("superSecret"), {
                         expiresIn : 60 * 60 * 24 // expires in 24 hours

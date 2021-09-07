@@ -1,0 +1,19 @@
+.cart-container {
+  margin: 100px 0; }
+  .cart-container .cart-items-table {
+    border-top: 1px solid #dfdfdf; }
+  .cart-container .cart-item-image {
+    width: 100%;
+    height: auto; }
+  .cart-container #qty-input {
+    height: 0; }
+  .cart-container .cart-footer {
+    width: 100%; }
+  .cart-container .cart-footer-content {
+    float: right;
+    margin-top: 40px;
+    text-align: right;
+    padding: 20px;
+    border: 1px solid #dfdfdf;
+    border-radius: 10px;
+    min-height: 100px; }

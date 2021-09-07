@@ -80,5 +80,16 @@
   "ProductTable_Category": "Category",
   "FeaturedProducts_Title": "Featured products",
   "AddToCart_Success": "Successfully added product to cart!",
-  "LastViewedProducts_Title": "Last viewed products"
+  "LastViewedProducts_Title": "Last viewed products",
+  "ProductDetail_Description": "Description",
+  "ProductDetail_Price": "Price",
+  "ProductDetail_Quantity": "Quantity",
+  "ProductDetail_Code": "Product code",
+  "ProductDetail_ShortDescription": "Short description",
+  "Button_AddToCart": "Add to cart",
+  "Breadcrumb_Home": "Home",
+  "CartPage_Header": "Cart",
+  "CartPage_EmptyCart": "Your cart is empty",
+  "CartPage_Update": "Save",
+  "CartPage_GoToCheckout": "Go to checkout"
 }

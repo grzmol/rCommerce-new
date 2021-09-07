@@ -53,6 +53,60 @@ const CartController = () => {
         res.json(cart);
     });
 
+    router.post('/removeFromCart', async (req, res) => {
+        let userCart = await CartModel.findOne({_id: req.body.cartId, isActive: true});
+        let currCartItems = userCart.cartItems;
+
+        if(userCart) {
+            let existingItem = _.filter(currCartItems, item => {
+                return String(item._id) === String(req.body.itemId);
+            })[0] || {};
+
+            userCart.cartItems = _.without(currCartItems, existingItem);
+
+            let totalCartPrice = 0;
+            let totalCartQty = 0;
+            _.each(userCart.cartItems, cartItem => {
+                totalCartPrice += cartItem.itemPrice;
+                totalCartQty += cartItem.quantity;
+            });
+            userCart.totalPrice = totalCartPrice;
+            userCart.totalQuantity = totalCartQty;
+
+            let updatedCart = await CartModel.findOneAndUpdate({_id: userCart._id}, userCart);
+            res.json(updatedCart);
+        }
+    });
+    router.post('/updateItemQuantity', async (req, res) => {
+        let userCart = await CartModel.findOne({_id: req.body.cartId, isActive: true});
+        let currCartItems = userCart.cartItems;
+
+        if(userCart){
+            let existingItem = _.filter(currCartItems, item => {
+                return String(item._id) === String(req.body.itemId);
+            })[0] || {};
+
+            let userQty = req.body.quantity;
+            if(req.body.quantity > 0){
+                existingItem.quantity = userQty;
+            }
+
+            let totalCartPrice = 0;
+            let totalCartQty = 0;
+            _.each(userCart.cartItems, cartItem => {
+                totalCartPrice += cartItem.itemPrice;
+                totalCartQty += cartItem.quantity;
+            });
+            userCart.totalPrice = totalCartPrice;
+            userCart.totalQuantity = totalCartQty;
+
+            let updatedCart = await CartModel.findOneAndUpdate({_id: userCart._id}, userCart);
+            res.json(updatedCart);
+        }else{
+            res.json({});
+        }
+    });
+
     router.post('/new', async (req, res) => {
         let cart = {
             user: req.body.user,

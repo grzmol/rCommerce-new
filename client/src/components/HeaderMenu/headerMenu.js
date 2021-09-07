@@ -6,7 +6,7 @@ import MenuItem from '../MenuItem/menuItem'
 import _ from 'lodash';
 
 
-import { withTranslation } from "react-i18next";
+import {withTranslation} from "react-i18next";
 
 class HeaderMenuComponent extends React.Component {
     constructor(props) {

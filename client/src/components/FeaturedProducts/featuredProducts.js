@@ -4,7 +4,6 @@ import {withTranslation} from "react-i18next";
 import {Container} from "@material-ui/core";
 
 import "./featuredProducts.css";
-import {Link} from "react-router-dom";
 import ProductGridItem from "../ProductGridItem/productGridItem";
 
 class FeaturedProductsComponent extends React.Component {

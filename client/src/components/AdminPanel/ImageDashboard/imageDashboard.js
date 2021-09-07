@@ -6,7 +6,6 @@ import ImageDashboardListComponent from "./ImageDashboardList/imageDashboardList
 import ImageDashboardHeaderComponent from "./ImageDashboardHeader/imageDashboardHeader";
 
 
-
 export default class ImageDashboardComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -25,7 +24,6 @@ export default class ImageDashboardComponent extends React.Component {
                     images: resp.data
                 });
             }
-            console.log(resp)
 
             axios.get('/api/product').then(respInner => {
                 this.setState({

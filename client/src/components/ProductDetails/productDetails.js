@@ -2,8 +2,8 @@ import React from 'react';
 import axios from "axios";
 
 import {withTranslation} from "react-i18next";
-import {Backdrop, CircularProgress, Container, Divider, TextField} from "@material-ui/core";
-import { withRouter } from 'react-router-dom';
+import {Container, Divider, TextField} from "@material-ui/core";
+import {withRouter} from 'react-router-dom';
 
 import "./productDetails.css";
 import AwesomeSlider from "react-awesome-slider";
@@ -14,6 +14,9 @@ import _ from "lodash";
 import BreadcrumbComponent from "../Breadcrumb/breadcrumb";
 import MuiAlert from "@material-ui/lab/Alert";
 import LastViewedProductsComponent from "../LastViewedProducts/lastViewedProducts";
+import LoaderComponent from "../Loader/loader";
+import {addToCart} from "../../actions/cartActions";
+import {connect} from "react-redux";
 
 class ProductDetailsComponent extends React.Component {
     constructor(props) {
@@ -36,7 +39,6 @@ class ProductDetailsComponent extends React.Component {
     componentDidMount() {
         let productCode = this.props.match.params.productCode || '';
         axios.get('/api/product/' + productCode).then(resp => {
-            console.log('resp', resp);
             if(resp.status === 200 && resp.data){
                 let product = resp.data.product;
                 if(product){
@@ -75,22 +77,13 @@ class ProductDetailsComponent extends React.Component {
     addToCart(event) {
         let currentUser = this.props.user;
         let product = this.state.product;
-        this.setState({showBackdrop: true});
         if(currentUser.username){
             let productToAdd = {
                 user: currentUser.username,
                 product: product._id,
                 quantity: this.state.productQuantity
             };
-            axios.post('/api/cart/addItem', productToAdd).then(resp => {
-                if(resp.status === 200 && !_.isEmpty(resp.data)){
-                    this.showAddToMessage();
-                    window.actions.fetchHeaderInfo();
-                }
-                this.setState({showBackdrop: false});
-            }).catch(err => {
-                console.error(err)
-            })
+            this.props.addToCart(productToAdd);
         }
     }
 
@@ -112,10 +105,6 @@ class ProductDetailsComponent extends React.Component {
             top: '85px',
             right: this.state.showAddToMessage ? '20px' : '-500px',
             transition: 'right 1s'
-        }
-        const backdropStyle = {
-            zIndex: 6,
-            color: '#fff'
         }
         function Alert(props) {
             return <MuiAlert elevation={6} variant="filled" {...props} style={addToCartMessageStyle}/>;
@@ -181,13 +170,21 @@ class ProductDetailsComponent extends React.Component {
                     </Grid>
                 </Container>
                 <Alert severity="success">{t('AddToCart_Success')}</Alert>
-                <Backdrop style={backdropStyle} open={this.state.showBackdrop}>
-                    <CircularProgress color="inherit" />
-                </Backdrop>
                 <LastViewedProductsComponent />
+                <LoaderComponent style={{display: !this.state.dataReady ? 'inline-block' : 'none'}} />
             </div>
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        cart: state.cart
+    }
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (itemToAdd)=> dispatch(addToCart(itemToAdd))
+    }
+};
 
-export default withTranslation()(withRouter(ProductDetailsComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withRouter(ProductDetailsComponent)));

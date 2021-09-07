@@ -7,6 +7,7 @@ import ProductController from "./productController";
 import CategoryController from "./categoryController";
 import ImageController from "./imageController";
 import CartController from "./cartController";
+import OrderController from "./orderController";
 
 export { 
     HomeController,
@@ -17,5 +18,6 @@ export {
     ProductController,
     CategoryController,
     ImageController,
-    CartController
+    CartController,
+    OrderController
 };

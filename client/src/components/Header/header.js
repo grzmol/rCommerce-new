@@ -5,21 +5,37 @@ import {faBars} from '@fortawesome/free-solid-svg-icons'
 import HeaderActionBarComponent from "../HeaderActionBar/headerActionBar";
 import HeaderMenuComponent from "../HeaderMenu/headerMenu";
 import _ from 'lodash';
-import axios from "axios";
 import {Link} from "react-router-dom";
 
-const HeaderComponent = (props) => {
+import {connect} from 'react-redux'
+import {fetchCart} from "../../actions/cartActions";
+import {Backdrop, CircularProgress} from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+
+import {withTranslation} from "react-i18next";
+import { withRouter } from 'react-router-dom';
+
+const HeaderComponent = ({history, ...props}) => {
     const [backgroundClass, setBackgroundClass] = useState('');
     const [menuOpenClass, setMenuOpenClass] = useState('');
-    const [userCart, setUserCart] = useState({});
+    const [historyListenerEnabled, setHistoryListenerEnabled] = useState(false);
+    const [initCartFetched, setInitCartFetched] = useState(false);
+    const {t} = props;
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
-        if(_.isEmpty(userCart)){
-            fetchCart();
+        if(!initCartFetched){
+            setInitCartFetched(true);
+            props.fetchCart();
         }
     });
 
+    if(!historyListenerEnabled){
+        history.listen(() => {
+            props.fetchCart();
+        });
+        setHistoryListenerEnabled(true);
+    }
 
     const handleScroll = () => {
         if (window.pageYOffset > 0) {
@@ -31,21 +47,6 @@ const HeaderComponent = (props) => {
                 setBackgroundClass('');
             }
         }
-    }
-
-    const fetchCart = () => {
-        axios.post('/api/cart', {user: props.user.username}).then(resp => {
-            if (resp.status === 200 && resp.data){
-                setUserCart(resp.data);
-            }else{
-                let cartData = {
-                    user: props.user.username,
-                }
-                axios.post('/api/cart/new', cartData).then(resp => {
-                    setUserCart(resp.data);
-                });
-            }
-        });
     }
 
     const toggleHamburgerMenu = () => {
@@ -69,9 +70,20 @@ const HeaderComponent = (props) => {
         })
         return result;
     }
-
-    window.actions = {};
-    window.actions.fetchHeaderInfo = fetchCart;
+    const addToCartMessageStyle = {
+        position: 'fixed',
+        top: '85px',
+        right: props.showAddToMessage ? '20px' : '-500px',
+        transition: 'right 1s',
+        zIndex: 5
+    }
+    const backdropStyle = {
+        zIndex: 6,
+        color: '#fff'
+    }
+    function Alert(props) {
+        return <MuiAlert elevation={6} variant="filled" {...props} style={addToCartMessageStyle}/>;
+    }
 
     return (
 
@@ -85,17 +97,37 @@ const HeaderComponent = (props) => {
                 </div>
                 <div className="page-header-section-center">
                     <Link to="/">
-                        <div className="page-logo"></div>
+                        <div className="page-logo"/>
                     </Link>
                 </div>
                 <div className="page-header-section-right">
-                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} userCart={userCart} logoutAction={props.history.logout}/>
+                    <HeaderActionBarComponent isLoggedIn={props.isLoggedIn} userCart={props.cart} logoutAction={history.logout}/>
                 </div>
             </div>
             <HeaderMenuComponent />
+            <Alert severity="success">{t('AddToCart_Success')}</Alert>
+            <Backdrop style={backdropStyle} open={props.fetching}>
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </div>
 
     );
 }
 
-export default HeaderComponent;
+const mapStateToProps = (state) => {
+    return {
+        cart: state.cart,
+        user: state.user,
+        error: state.error,
+        fetching: state.fetching,
+        showAddToMessage: state.showAddToMessage
+    }
+}
+function mapDispatchToProps(dispatch){
+    return {
+        fetchCart: ()=> dispatch(fetchCart())
+    }
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withRouter(HeaderComponent)));

@@ -5,6 +5,8 @@ import FeaturedProductsComponent from "../components/FeaturedProducts/featuredPr
 
 import AuthService from "../services/authService";
 import LastViewedProductsComponent from "../components/LastViewedProducts/lastViewedProducts";
+import AuthWrapper from "../components/authWrapper";
+
 const HomePage = () => {
     const auth = new AuthService();
     return (
@@ -12,8 +14,9 @@ const HomePage = () => {
             <HeroImageComponent />
             <NavMenuComponent />
             <FeaturedProductsComponent currentUser={auth.getProfile()} />
+            <LastViewedProductsComponent />
         </div>
     );
 }
 
-export default HomePage;
+export default AuthWrapper(HomePage);

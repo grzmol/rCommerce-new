@@ -87,5 +87,27 @@
   "ProductDetail_Code": "Kod produktu",
   "ProductDetail_ShortDescription": "Krótki opis",
   "Button_AddToCart": "Dodaj do koszyka",
-  "Breadcrumb_Home": "Home"
+  "Breadcrumb_Home": "Home",
+  "CartPage_Header": "Koszyk",
+  "CartPage_EmptyCart": "Twój koszyk jest pusty",
+  "CartPage_Update": "Zapisz",
+  "CartPage_GoToCheckout": "Przejdź do dostawy",
+  "CartPage_SaveCoupon": "Dodaj",
+  "CartPage_Coupon": "Kod promocyjny",
+  "CartPage_TotalPrice": "Kwota całkowita",
+  "Checkout_Title": "Dane zamówienia",
+  "Checkout_PlaceOrder": "Złóż zamówienie",
+  "Address_Name": "Imię",
+  "Address_LastName": "Nazwisko",
+  "Address_Line1": "Adres 1",
+  "Address_Line2": "Adres 2",
+  "Address_City": "Miasto",
+  "Address_PostalCode": "Kod pocztowy",
+  "Address_Country": "Kraj",
+  "Checkout_CardSection": "Płatność",
+  "Checkout_AddressSection": "Adres wysyłki",
+  "Checkout_ComeBack": "Kontynuuj zakupy",
+  "OrderConfirmation_Title": "Dziękujemy za złożenie zamówienia!",
+  "OrderConfirmation_Subtitle": "Zamówienie zostanie przekazane do realizacji. Status zamówenia możesz sprawdzić na stronie profilu."
+
 }
