@@ -16,15 +16,12 @@ class ProductDashboardComponent extends React.Component {
         this.fetchData = this.fetchData.bind(this);
     }
 
-    fetchData(){
+    fetchData() {
         axios.get('/api/product').then(resp => {
-            axios.get('/api/category').then(respInner => {
-                this.setState({
-                    products: resp.data,
-                    categories: respInner.data,
-                    dataReady: true
-                });
-            })
+            this.setState({
+                products: resp.data,
+                dataReady: true
+            });
         })
     }
 
@@ -38,10 +35,12 @@ class ProductDashboardComponent extends React.Component {
                 {
                     this.state.dataReady ?
                         <div>
-                            <ProductDashboardHeaderComponent fetchAction={this.fetchData} categories={this.state.categories}/>
-                            <ProductDashboardListComponent productList={this.state.products}  fetchAction={this.fetchData}/>
+                            <ProductDashboardHeaderComponent fetchAction={this.fetchData}
+                                                             categories={this.state.categories}/>
+                            <ProductDashboardListComponent productList={this.state.products}
+                                                           fetchAction={this.fetchData}/>
                         </div>
-                    : <LoaderComponent />
+                        : <LoaderComponent/>
                 }
 
             </div>

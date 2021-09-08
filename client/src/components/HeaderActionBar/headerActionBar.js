@@ -12,18 +12,21 @@ const HeaderActionBarComponent = ({history, ...props}) => {
         <div className='page-header-actions'>
             <div className='header-action-cart'>
                 <Badge badgeContent={props.userCart.totalQuantity} color="secondary">
-                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/cart')} icon={faShoppingCart} />
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/cart')}
+                                     icon={faShoppingCart}/>
                 </Badge>
             </div>
             <div className='header-action-user'>
-                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account/information')} icon={faUser} />
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account/information')}
+                                 icon={faUser}/>
             </div>
-            {   props.isLoggedIn ?
+            {props.isLoggedIn ?
                 <div className='header-action-logout'>
-                    <FontAwesomeIcon className="header-action-icon" onClick={props.logoutAction} icon={faSignOutAlt} />
+                    <FontAwesomeIcon className="header-action-icon" onClick={props.logoutAction} icon={faSignOutAlt}/>
                 </div> :
                 <div className='header-action-login'>
-                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')} icon={faSignInAlt} />
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')}
+                                     icon={faSignInAlt}/>
                 </div>
             }
         </div>

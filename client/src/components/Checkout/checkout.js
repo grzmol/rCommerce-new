@@ -12,7 +12,7 @@ import {connect} from "react-redux";
 import axios from "axios";
 import {TextField} from "@material-ui/core";
 import CartComponent from "../Cart/cart";
-import { withRouter } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {loadingOff, loadingOn} from "../../actions/cartActions";
 
 
@@ -69,7 +69,7 @@ class CheckoutForm extends React.Component {
                         country: this.state.country
                     }
                     axios.post('/api/order/place', orderData).then(resp => {
-                        if(resp && resp.data && resp.status === 200){
+                        if (resp && resp.data && resp.status === 200) {
                             this.props.history.push('/orderConfirmation?order=' + resp.data._id);
                         }
                     });
@@ -88,6 +88,7 @@ class CheckoutForm extends React.Component {
             [inputName]: currentTarget.value
         });
     }
+
     handleClose(event, reason) {
         if (reason === 'clickaway') {
             return;
@@ -117,11 +118,13 @@ class CheckoutForm extends React.Component {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField id="shipping-addressline1" name="addressline1"
-                                                   label={t('Address_Line1')} required="true" fullWidth onInput={this.handleInputChange}/>
+                                                   label={t('Address_Line1')} required="true" fullWidth
+                                                   onInput={this.handleInputChange}/>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField id="shipping-addressline2" name="addressline2"
-                                                   label={t('Address_Line2')} fullWidth onInput={this.handleInputChange}/>
+                                                   label={t('Address_Line2')} fullWidth
+                                                   onInput={this.handleInputChange}/>
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField id="shipping-city" name="city" label={t('Address_City')}
@@ -129,7 +132,8 @@ class CheckoutForm extends React.Component {
                                     </Grid>
                                     <Grid item xs={6}>
                                         <TextField id="shipping-postalCode" name="postalCode"
-                                                   label={t('Address_PostalCode')} required="true" fullWidth onInput={this.handleInputChange}/>
+                                                   label={t('Address_PostalCode')} required="true" fullWidth
+                                                   onInput={this.handleInputChange}/>
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField id="shipping-country" name="country" label={t('Address_Country')}
@@ -170,13 +174,15 @@ const mapStateToProps = (state) => {
         fetching: state.fetching
     }
 }
-function mapDispatchToProps(dispatch){
+
+function mapDispatchToProps(dispatch) {
     return {
-        loadingOn: ()=>dispatch(loadingOn()),
-        loadingOff: ()=>dispatch(loadingOff())
+        loadingOn: () => dispatch(loadingOn()),
+        loadingOff: () => dispatch(loadingOff())
     }
 
 }
+
 const CheckoutFormInjection = connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withRouter(CheckoutForm)))
 
 function CheckoutComponent() {

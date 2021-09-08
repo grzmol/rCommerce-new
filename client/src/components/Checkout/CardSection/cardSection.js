@@ -24,7 +24,7 @@ const CARD_ELEMENT_OPTIONS = {
 
 function CardSection() {
     return (
-        <CardElement options={CARD_ELEMENT_OPTIONS} />
+        <CardElement options={CARD_ELEMENT_OPTIONS}/>
     );
 }
 

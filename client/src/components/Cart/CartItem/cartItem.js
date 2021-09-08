@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import {Delete} from "@material-ui/icons";
 
 const CartItemComponent = (props) => {
-    const { t } = props;
+    const {t} = props;
     const [itemQty, setItemQty] = useState(props.data.quantity);
     const [qtyInputDisabled, setQtyInputDisabled] = useState(true);
     const [itemTotalPrice, setItemPrice] = useState(props.data.itemPrice);
@@ -24,10 +24,10 @@ const CartItemComponent = (props) => {
     const validateAndSaveQty = (event) => {
         let currValue = event.target.value;
 
-        if(_.isNumber(Number(currValue)) && currValue > 0){
+        if (_.isNumber(Number(currValue)) && currValue > 0) {
             setItemQty(currValue)
             setItemPrice(Number(currValue) * Number(productForItem.price));
-        }else{
+        } else {
             event.target.value = itemQty;
         }
     }
@@ -37,7 +37,6 @@ const CartItemComponent = (props) => {
             itemId: props.data._id,
             quantity: itemQty
         }
-        console.log('requestData', requestData)
         props.updateQuantity(requestData);
     }
 
@@ -52,9 +51,9 @@ const CartItemComponent = (props) => {
 
     return (
         <div className="cart-item">
-            <Grid container spacing={3} style={{display:'flex', flexDirection:'row', alignItems:'center'}}>
+            <Grid container spacing={3} style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                 <Grid item xs={2}>
-                    <img className="cart-item-image" src={productForItem.image} alt="" />
+                    <img className="cart-item-image" src={productForItem.image} alt=""/>
                 </Grid>
                 <Grid item xs={5}>
                     <h4>{productForItem.name}</h4>
@@ -74,17 +73,18 @@ const CartItemComponent = (props) => {
                     />
                 </Grid>
                 <Grid item xs={2} style={{display: props.readOnly ? 'none' : 'block'}}>
-                    <Button variant="contained" color="primary" onClick={updateQuantity} disabled={qtyInputDisabled} fullWidth>
+                    <Button variant="contained" color="primary" onClick={updateQuantity} disabled={qtyInputDisabled}
+                            fullWidth>
                         {t('CartPage_Update')}
                     </Button>
                 </Grid>
                 <Grid item xs={1} style={{visibility: props.readOnly ? 'hidden' : 'normal'}}>
                     <IconButton color="primary" aria-label="upload picture" component="span" onClick={removeCartItem}>
-                        <Delete />
+                        <Delete/>
                     </IconButton>
                 </Grid>
             </Grid>
-            <Divider />
+            <Divider/>
         </div>
     );
 }

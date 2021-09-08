@@ -1,0 +1,18 @@
+.product-list-container {
+  margin-top: 100px;
+
+  .product-list-filter-section {
+    width: 100%;
+    border-bottom: 1px solid #dfdfdf;
+    min-height: 50px;
+    padding: 15px 0;
+  }
+
+  .product-list-content {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+}

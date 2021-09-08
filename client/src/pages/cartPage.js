@@ -8,7 +8,7 @@ const CartPage = () => {
     const auth = new AuthService();
     return (
         <div>
-            <CartComponent />
+            <CartComponent/>
             <FeaturedProductsComponent currentUser={auth.getProfile()}/>
         </div>
     );

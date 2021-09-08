@@ -7,13 +7,13 @@ import _ from 'lodash';
 import axios from "axios";
 
 const CategoryDashboardListComponent = (props) => {
-    const { t } = props;
+    const {t} = props;
     const [confirmationModal, setConfirmationModal] = useState(false);
     const [categoriesToRemove, setCategoriesToRemove] = useState([]);
 
     const deleteCategories = () => {
         axios.post('/api/category/delete', {idsToRemove: categoriesToRemove}).then(resp => {
-            if(resp.status === 200){
+            if (resp.status === 200) {
                 props.fetchAction();
                 closeConfirmationDialog();
             }
@@ -39,10 +39,10 @@ const CategoryDashboardListComponent = (props) => {
             <MaterialTable
                 title={t('MenuItem_Categories')}
                 columns={[
-                    { title: t('CategoryTable_Name'), field: 'name' },
-                    { title: t('CategoryTable_DisplayNameEN'), field: 'displayNameEN' },
-                    { title: t('CategoryTable_DisplayNamePL'), field: 'displayNamePL' },
-                    { title: t('CategoryTable_Desc'), field: 'desc' }
+                    {title: t('CategoryTable_Name'), field: 'name'},
+                    {title: t('CategoryTable_DisplayNameEN'), field: 'displayNameEN'},
+                    {title: t('CategoryTable_DisplayNamePL'), field: 'displayNamePL'},
+                    {title: t('CategoryTable_Desc'), field: 'desc'}
                 ]}
                 data={props.categories}
                 options={{
@@ -58,7 +58,8 @@ const CategoryDashboardListComponent = (props) => {
                 ]}
                 localization={getTranslation()}
             />
-            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog} agree={deleteCategories}/>
+            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog}
+                                         agree={deleteCategories}/>
         </div>
 
     )

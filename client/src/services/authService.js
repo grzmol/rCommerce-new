@@ -8,7 +8,7 @@ export default class AuthService {
         this.tokenName = 'JWS_TOKEN';
     }
 
-    login = async(username, password,email) => {
+    login = async (username, password, email) => {
         let response = await fetch('/auth/login', {
             method: 'POST',
             headers: {
@@ -24,7 +24,7 @@ export default class AuthService {
 
         const result = await response.json();
 
-        if(!result.success) {
+        if (!result.success) {
             alert(result.message);
             return false;
         }
@@ -35,7 +35,7 @@ export default class AuthService {
     }
 
 
-    register = async(username, password,email) => {
+    register = async (username, password, email) => {
         let response = await fetch('/auth/register', {
             method: 'POST',
             headers: {
@@ -51,12 +51,12 @@ export default class AuthService {
 
         const result = await response.json();
 
-        if(!result.success) {
+        if (!result.success) {
             alert(result.message);
             return false;
         }
 
-     //   this.setToken(result.token) // Setting the token in localStorage
+        //   this.setToken(result.token) // Setting the token in localStorage
         return true;
     }
 
@@ -70,7 +70,7 @@ export default class AuthService {
     getProfile() {
         // Using jwt-decode npm package to decode the token
         const token = this.getToken();
-        if(token){
+        if (token) {
             return decode(token);
         }
         return {};
@@ -86,8 +86,7 @@ export default class AuthService {
         try {
             const decoded = decode(token);
             return decoded.exp < Date.now() / 1000; // Checking if token is expired
-        }
-        catch (err) {
+        } catch (err) {
             return false;
         }
     }

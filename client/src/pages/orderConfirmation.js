@@ -1,13 +1,11 @@
 import React from "react";
-import AuthService from "../services/authService";
 import AuthWrapper from "../components/authWrapper";
 import OrderConfirmationComponent from "../components/OrderConfirmation/orderConfirmation";
 
-let authService = new AuthService();
-const OrderConfirmationPage = (props) => {
+const OrderConfirmationPage = () => {
     return (
         <div className="order-confirmation">
-            <OrderConfirmationComponent />
+            <OrderConfirmationComponent/>
         </div>
     );
 }

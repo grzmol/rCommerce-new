@@ -17,7 +17,7 @@ export default class NavMenuComponent extends React.Component {
 
     componentDidMount() {
         axios.get('/api/category').then(resp => {
-            if(resp.status === 200 && resp.data){
+            if (resp.status === 200 && resp.data) {
                 this.setState({menuItems: resp.data});
             }
             this.setState({dataReady: true});
@@ -31,7 +31,7 @@ export default class NavMenuComponent extends React.Component {
         return (
             <div className="nav-menu-container">
                 <Container>
-                    {this.state.menuItems.map( item => (
+                    {this.state.menuItems.map(item => (
                         <div className="nav-menu-item" key={item.name}>
                             <Link to={'/productList?category=' + item.name.toLowerCase()}>{item.name}</Link>
                         </div>

@@ -34,14 +34,24 @@ class ProductDetailsComponent extends React.Component {
         this.showAddToMessage = this.showAddToMessage.bind(this);
         this.hideAddToMessage = this.hideAddToMessage.bind(this);
         this.addToCart = this.addToCart.bind(this);
+        this.fetchProduct = this.fetchProduct.bind(this);
     }
 
     componentDidMount() {
+        this.fetchProduct();
+
+        this.props.history.listen(() => {
+            this.fetchProduct();
+        });
+    }
+
+
+    fetchProduct() {
         let productCode = this.props.match.params.productCode || '';
         axios.get('/api/product/' + productCode).then(resp => {
-            if(resp.status === 200 && resp.data){
+            if (resp.status === 200 && resp.data) {
                 let product = resp.data.product;
-                if(product){
+                if (product) {
                     this.setState({
                         product: product,
                         images: [product.image]
@@ -49,9 +59,9 @@ class ProductDetailsComponent extends React.Component {
 
                     let lastViewedProductsJSON = sessionStorage.getItem('lastViewed') || '[]';
                     let lastViewedArray = JSON.parse(lastViewedProductsJSON);
-                    if(!_.includes(lastViewedArray, product._id)){
+                    if (!_.includes(lastViewedArray, product._id)) {
                         lastViewedArray.push(product._id);
-                        sessionStorage.setItem('lastViewed',JSON.stringify(lastViewedArray));
+                        sessionStorage.setItem('lastViewed', JSON.stringify(lastViewedArray));
                     }
                 }
             }
@@ -60,15 +70,14 @@ class ProductDetailsComponent extends React.Component {
         }).catch(err => {
             console.error(err)
         });
-
     }
 
     validateAndSaveQty(event) {
         let currValue = event.target.value;
 
-        if(_.isNumber(Number(currValue)) && currValue > 0){
+        if (_.isNumber(Number(currValue)) && currValue > 0) {
             this.setState({productQuantity: currValue})
-        }else{
+        } else {
             event.target.value = this.state.productQuantity;
         }
 
@@ -77,7 +86,7 @@ class ProductDetailsComponent extends React.Component {
     addToCart(event) {
         let currentUser = this.props.user;
         let product = this.state.product;
-        if(currentUser.username){
+        if (currentUser.username) {
             let productToAdd = {
                 user: currentUser.username,
                 product: product._id,
@@ -87,13 +96,13 @@ class ProductDetailsComponent extends React.Component {
         }
     }
 
-    showAddToMessage(){
+    showAddToMessage() {
         this.setState({showAddToMessage: true});
         setTimeout(this.hideAddToMessage, 2000);
 
     }
 
-    hideAddToMessage(){
+    hideAddToMessage() {
         this.setState({showAddToMessage: false});
     }
 
@@ -106,6 +115,7 @@ class ProductDetailsComponent extends React.Component {
             right: this.state.showAddToMessage ? '20px' : '-500px',
             transition: 'right 1s'
         }
+
         function Alert(props) {
             return <MuiAlert elevation={6} variant="filled" {...props} style={addToCartMessageStyle}/>;
         }
@@ -115,11 +125,12 @@ class ProductDetailsComponent extends React.Component {
                 <Container>
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
-                            <BreadcrumbComponent product={ product } category={ product.category }/>
+                            <BreadcrumbComponent product={product} category={product.category}/>
                         </Grid>
                         <Grid item xs={12} md={6} lg={6}>
                             <AwesomeSlider className="awesome-slider-cust">
-                                {this.state.images.map(item => <div className="carousel-image-wrapper" key={item} ><img className="carousel-image" src={item} /></div>)}
+                                {this.state.images.map(item => <div className="carousel-image-wrapper" key={item}><img
+                                    className="carousel-image" src={item} alt={item}/></div>)}
                             </AwesomeSlider>
                         </Grid>
                         <Grid item xs={12} md={6} lg={6}>
@@ -127,12 +138,12 @@ class ProductDetailsComponent extends React.Component {
                                 <Grid item xs={12}>
                                     <h1>{product.name}</h1>
                                     <p>{t('ProductDetail_Code')}:&nbsp;{product.productCode}&nbsp;PLN</p>
-                                    <Divider />
+                                    <Divider/>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <div className="product-details-desc">
                                         <p className="section-label">{t('ProductDetail_ShortDescription')}</p>
-                                        {product.desc}
+                                        {product.shortDesc}
                                     </div>
                                     <p></p>
                                     <Divider/>
@@ -170,12 +181,13 @@ class ProductDetailsComponent extends React.Component {
                     </Grid>
                 </Container>
                 <Alert severity="success">{t('AddToCart_Success')}</Alert>
-                <LastViewedProductsComponent />
-                <LoaderComponent style={{display: !this.state.dataReady ? 'inline-block' : 'none'}} />
+                <LastViewedProductsComponent/>
+                <LoaderComponent style={{display: !this.state.dataReady ? 'inline-block' : 'none'}}/>
             </div>
         )
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         cart: state.cart
@@ -183,7 +195,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        addToCart: (itemToAdd)=> dispatch(addToCart(itemToAdd))
+        addToCart: (itemToAdd) => dispatch(addToCart(itemToAdd))
     }
 };
 

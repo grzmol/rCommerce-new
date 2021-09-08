@@ -5,6 +5,11 @@ let router = express.Router();
 
 const OrderController = () => {
 
+    router.get('/', async (req, res) => {
+        let orders = await Order.find({});
+        res.json(orders);
+    });
+
     router.post('/', async (req, res) => {
         let orders = await Order.find({user: req.body.user});
         res.json(orders);

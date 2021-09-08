@@ -1,7 +1,7 @@
 import {useTranslation} from 'react-i18next';
 
 export const getTranslation = () => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const listLocales = {
         body: {
             emptyDataSourceMessage: t('ProductTable_body.emptyDataSourceMessage'),

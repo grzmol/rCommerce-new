@@ -8,7 +8,7 @@ let userSchema =new Schema({
     password:String,
     email : String,
     isAdmin: Boolean,
-    isActive:false
+    isActive: Boolean
 });
 
 userSchema.pre('save', function (next) {

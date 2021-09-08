@@ -6,8 +6,8 @@ const MyAccountNavComponent = (props) => {
 
     return (
         <div className={'myaccount-navigation'}>
-            <MenuItemComponent icon={faUser} name={'MyAccount_Information'} link={'/account/information'} />
-            <MenuItemComponent icon={faShippingFast} name={'MyAccount_Orders'} link={'/account/orders'} />
+            <MenuItemComponent icon={faUser} name={'MyAccount_Information'} link={'/account/information'}/>
+            <MenuItemComponent icon={faShippingFast} name={'MyAccount_Orders'} link={'/account/orders'}/>
         </div>
     );
 };

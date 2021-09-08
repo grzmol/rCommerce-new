@@ -11,10 +11,10 @@ const HomePage = () => {
     const auth = new AuthService();
     return (
         <div className="home-page">
-            <HeroImageComponent />
-            <NavMenuComponent />
-            <FeaturedProductsComponent currentUser={auth.getProfile()} />
-            <LastViewedProductsComponent />
+            <HeroImageComponent/>
+            <NavMenuComponent/>
+            <FeaturedProductsComponent currentUser={auth.getProfile()}/>
+            <LastViewedProductsComponent/>
         </div>
     );
 }

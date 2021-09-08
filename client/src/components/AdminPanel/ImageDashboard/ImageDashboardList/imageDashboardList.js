@@ -7,13 +7,13 @@ import _ from 'lodash';
 import axios from "axios";
 
 const ImageDashboardListComponent = (props) => {
-    const { t } = props;
+    const {t} = props;
     const [confirmationModal, setConfirmationModal] = useState(false);
     const [imagesToRemove, setImagesToRemove] = useState([]);
 
     const deleteImages = () => {
         axios.post('/api/image/delete', {idsToRemove: imagesToRemove}).then(resp => {
-            if(resp.status === 200){
+            if (resp.status === 200) {
                 props.fetchAction();
                 closeConfirmationDialog();
             }
@@ -39,11 +39,15 @@ const ImageDashboardListComponent = (props) => {
             <MaterialTable
                 title={t('TableHeader_Image')}
                 columns={[
-                    { title: '', field: 'img', render: item => <img src={item.imgBase64} alt="" border="1" height="300" width="300" />},
-                    { title: t('ImageTable_Type'), field: 'type' },
-                    { title: t('ImageTable_Name'), field: 'name' },
-                    { title: t('ImageTable_Description'), field: 'desc' },
-                    { title: t('ImageTable_ProductCode'), field: 'productCode' }
+                    {
+                        title: '',
+                        field: 'img',
+                        render: item => <img src={item.imgBase64} alt="" border="1" height="300" width="300"/>
+                    },
+                    {title: t('ImageTable_Type'), field: 'type'},
+                    {title: t('ImageTable_Name'), field: 'name'},
+                    {title: t('ImageTable_Description'), field: 'desc'},
+                    {title: t('ImageTable_ProductCode'), field: 'productCode'}
                 ]}
                 data={props.images}
                 options={{
@@ -59,7 +63,8 @@ const ImageDashboardListComponent = (props) => {
                 ]}
                 localization={getTranslation()}
             />
-            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog} agree={deleteImages}/>
+            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog}
+                                         agree={deleteImages}/>
         </div>
 
     )

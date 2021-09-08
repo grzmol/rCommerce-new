@@ -15,7 +15,7 @@ class MenuDashboardComponent extends React.Component {
         this.fetchData = this.fetchData.bind(this);
     }
 
-    fetchData(){
+    fetchData() {
         axios.get('/api/menu').then(resp => {
             this.setState({
                 menuItems: resp.data,
@@ -37,7 +37,7 @@ class MenuDashboardComponent extends React.Component {
                             <MenuDashboardHeaderComponent fetchAction={this.fetchData}/>
                             <MenuDashboardListComponent menuItems={this.state.menuItems} fetchAction={this.fetchData}/>
                         </div>
-                        : <LoaderComponent />
+                        : <LoaderComponent/>
                 }
 
             </div>

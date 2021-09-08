@@ -1,9 +1,10 @@
 import React from "react";
+import ProductListComponent from "../components/ProductList/productList";
 
 const ProductListPage = () => {
     return (
         <div>
-            pdp
+            <ProductListComponent/>
         </div>
     );
 }

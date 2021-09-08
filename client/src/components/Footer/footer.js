@@ -10,7 +10,7 @@ const FooterComponent = (props) => {
         let result = true;
 
         _.each(pagesWithoutFooter, (item) => {
-            if(pathname.indexOf(item) !== -1){
+            if (pathname.indexOf(item) !== -1) {
                 result = false;
             }
         })
@@ -18,7 +18,7 @@ const FooterComponent = (props) => {
     }
 
     return (
-        <div className="page-footer"  style={{display: displayFooter() ? 'block' : 'none'}}>
+        <div className="page-footer" style={{display: displayFooter() ? 'block' : 'none'}}>
             <div className="page-footer-main">
                 fdsf
             </div>
