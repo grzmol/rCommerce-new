@@ -22,14 +22,14 @@ class CartComponent extends React.Component {
         }
     }
 
-    fetchProductsForItems(){
+    fetchProductsForItems() {
         const cartItems = this.props.cart && this.props.cart.cartItems;
         let productsToFetch = cartItems && cartItems.map(({product}) => product);
 
-        if(productsToFetch && (this.state.productsForItems.length !== productsToFetch.length)){
+        if (productsToFetch && (this.state.productsForItems.length !== productsToFetch.length)) {
             this.props.loadingOn();
             axios.post('/api/product/getMany', {productIds: productsToFetch}).then(resp => {
-                if(resp.status === 200 && resp.data){
+                if (resp.status === 200 && resp.data) {
                     this.setState({productsForItems: resp.data, refetchProducts: false});
                 }
                 this.props.loadingOff();
@@ -37,11 +37,12 @@ class CartComponent extends React.Component {
                 console.error(err)
             });
         }
-        console.log(productsToFetch)
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.fetchProductsForItems();
     }
+
     render() {
         const {t} = this.props;
         const {cart} = this.props;
@@ -53,10 +54,16 @@ class CartComponent extends React.Component {
         return (
             <Container>
                 <div className="cart-container">
-                    <h1>{t('CartPage_Header')}<span className="cart-item-count">&nbsp;({this.props.cart.totalQuantity || 0 })</span> </h1>
+                    <h1>{t('CartPage_Header')}<span
+                        className="cart-item-count">&nbsp;({this.props.cart.totalQuantity || 0})</span></h1>
                     <div className="cart-items-table">
                         {displayCart ? (
-                            cart.cartItems.map(item => <CartItemComponent key={item.product} readOnly={this.props.isCheckout} cart={cart} products={this.state.productsForItems} data={item} updateQuantity={this.props.updateItemQuantity} removeCartItem={this.props.removeCartItem}/>)
+                            cart.cartItems.map(item => <CartItemComponent key={item.product}
+                                                                          readOnly={this.props.isCheckout} cart={cart}
+                                                                          products={this.state.productsForItems}
+                                                                          data={item}
+                                                                          updateQuantity={this.props.updateItemQuantity}
+                                                                          removeCartItem={this.props.removeCartItem}/>)
                         ) : noProductsDisplay()}
                     </div>
                     <div className="cart-footer" style={{display: displayCart ? 'inline-block' : 'none'}}>
@@ -76,7 +83,7 @@ class CartComponent extends React.Component {
             </Container>
         )
     }
-};
+}
 
 
 const mapStateToProps = (state) => {
@@ -88,15 +95,16 @@ const mapStateToProps = (state) => {
         showAddToMessage: state.showAddToMessage
     }
 }
-function mapDispatchToProps(dispatch){
+
+function mapDispatchToProps(dispatch) {
     return {
-        fetchCart: ()=> dispatch(fetchCart()),
-        loadingOn: ()=>dispatch(loadingOn()),
-        loadingOff: ()=>dispatch(loadingOff()),
-        updateItemQuantity: (data)=>dispatch(updateItemQuantity(data)),
-        removeCartItem: (data)=>dispatch(removeCartItem(data))
+        fetchCart: () => dispatch(fetchCart()),
+        loadingOn: () => dispatch(loadingOn()),
+        loadingOff: () => dispatch(loadingOff()),
+        updateItemQuantity: (data) => dispatch(updateItemQuantity(data)),
+        removeCartItem: (data) => dispatch(removeCartItem(data))
     }
 
 }
 
-export default  connect(mapStateToProps, mapDispatchToProps)(withTranslation()(CartComponent));
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(CartComponent));

@@ -14,15 +14,13 @@ export default function AuthWrapper(AuthComponent) {
         componentWillMount() {
             if (!this.auth.isLoggedIn()) {
                 this.props.history.replace('/login')
-            }
-            else {
+            } else {
                 try {
                     const profile = this.auth.getProfile()
                     this.setState({
                         user: profile
                     })
-                }
-                catch(err){
+                } catch (err) {
                     this.auth.logout()
                     this.props.history.replace('/login')
                 }
@@ -32,10 +30,9 @@ export default function AuthWrapper(AuthComponent) {
         render() {
             if (this.state.user) {
                 return (
-                    <AuthComponent history={this.props.history} user={this.state.user} />
+                    <AuthComponent history={this.props.history} user={this.state.user}/>
                 )
-            }
-            else {
+            } else {
                 return null
             }
         }

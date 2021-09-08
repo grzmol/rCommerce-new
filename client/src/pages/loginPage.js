@@ -22,7 +22,7 @@ class LoginPage extends Component {
         }
     }
 
-    handleChange(e){
+    handleChange(e) {
         e.preventDefault();
         this.setState({[e.target.name]: e.target.value});
     }
@@ -34,13 +34,13 @@ class LoginPage extends Component {
     }
 
     componentWillMount() {
-        if(this.auth.isLoggedIn()){
+        if (this.auth.isLoggedIn()) {
             this.props.history.replace('/');
         }
     }
 
     render() {
-        const { t } = this.props;
+        const {t} = this.props;
         return (
             <div className="login-page" style={{padding: '40px'}}>
                 <Container maxWidth="xs">
@@ -49,7 +49,7 @@ class LoginPage extends Component {
                             <Grid item xs={12}>
                                 <Grid container spacing={2}>
                                     <Grid container alignItems="center" justify="center" xs="12">
-                                        <Avatar src="/broken-image.jpg" />
+                                        <Avatar src="/broken-image.jpg"/>
                                     </Grid>
 
                                     <Grid item xs={12}>
@@ -78,7 +78,8 @@ class LoginPage extends Component {
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button color="#002171" fullWidth type="submit" variant="contained" style={{backgroundColor: '#002171', color: 'white'}}>
+                                <Button color="#002171" fullWidth type="submit" variant="contained"
+                                        style={{backgroundColor: '#002171', color: 'white'}}>
                                     {t('Login_Button')}
                                 </Button>
                             </Grid>

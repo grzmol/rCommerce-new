@@ -55,7 +55,7 @@
   "Table_RemoveTooltip": "Usuń zaznaczone elementy",
   "MenuDashboard_NewItem": "Nowy element menu",
   "MenuDashboard_AddMenuItem": "Dodaj element",
-  "ConfirmationDialog_Text": "Jesteś pewien?",
+  "ConfirmationDialog_Text": "Czy na pewno chcesz usunąć ten rekord?",
   "ConfirmationDialog_Disagree": "Anuluj",
   "ConfirmationDialog_Agree": "Potwierdź",
   "MenuItem_Categories": "Kategorie",
@@ -118,5 +118,16 @@
   "MyOrders_Date": "Data złożenia",
   "OrderStatus_Placed": "W trakcie realizacji",
   "OrderStatus_undefined": "Brak statusu",
-  "MyAccount_InformationComponent": "Dane użytkownika"
+  "MyAccount_InformationComponent": "Dane użytkownika",
+  "OrdersDashboard_User": "Złożone przez",
+  "User_IsActive": "Aktywny",
+  "User_IsAdmin": "Admin",
+  "Edit_Tooltip": "Edytuj",
+  "Product_ShortDesc": "Krótki opis",
+  "ProductList_Title": "Lista produktów",
+  "Sort_NameAsc": "Nazwa rosnąco",
+  "Sort_NameDesc": "Nazwa malejąco",
+  "Sort_PriceAsc": "Cena rosnąco",
+  "Sort_PriceDesc": "Cena malejąco",
+  "Sort_Action": "Sortowanie"
 }

@@ -7,13 +7,16 @@
   color: $color-text-dark;
   font-size: 1.2rem;
   display: block;
+
   .menu-item_icon {
     margin-right: 15px;
   }
+
   &:not(:last-of-type) {
     border-bottom: 1px solid $color-light-gray;
   }
+
   &:hover {
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }

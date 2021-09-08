@@ -16,5 +16,5 @@ const middlewareEnhancer = applyMiddleware(thunk);
 const composedEnhancers = compose(middlewareEnhancer);
 const store = createStore(cartReducer, undefined, composedEnhancers)
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("root"));
 registerServiceWorker();

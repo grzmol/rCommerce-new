@@ -7,13 +7,16 @@
   left: 0;
   right: 0;
   height: 140px;
+
   .page-footer-main {
     height: 105px;
     background: $color-theme-dark;
   }
+
   .page-footer-bottom-fade {
     height: 35px;
     background: $color-dark-gray;
+
     .copyright-note {
       width: 100%;
       color: $color-text-light;

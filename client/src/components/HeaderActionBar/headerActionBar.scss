@@ -2,10 +2,12 @@
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
+
   & > * {
     margin-right: 20px;
     cursor: pointer;
   }
+
   .header-action-icon {
     font-size: 20px;
   }

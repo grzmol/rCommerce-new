@@ -25,19 +25,16 @@ export const REMOVE_CART_ITEM_SUCCESS = "REMOVE_CART_ITEM_SUCCESS";
 export const REMOVE_CART_ITEM_FAIL = "REMOVE_CART_ITEM_FAIL";
 
 
-
-
 export const fetchCart = () => {
     return async dispatch => {
         dispatch({
             type: FETCH_CART_REQUEST
         });
         try {
-            const { data, status } = await axios.post('/api/cart', {user: currentUser.username})
-            console.log('dfdfs', data);
-            if(status === 200 && data){
-                dispatch({ type: FETCH_CART_SUCCESS, status, payload: data });
-            }else{
+            const {data, status} = await axios.post('/api/cart', {user: currentUser.username})
+            if (status === 200 && data) {
+                dispatch({type: FETCH_CART_SUCCESS, status, payload: data});
+            } else {
                 dispatch(createCart());
             }
 
@@ -56,9 +53,9 @@ export const createCart = () => {
             type: CREATE_CART_REQUEST
         });
         try {
-            const { data, status } = await axios.post('/api/cart/new', {user: currentUser.username})
+            const {data, status} = await axios.post('/api/cart/new', {user: currentUser.username})
             dispatch(fetchCart());
-            dispatch({ type: CREATE_CART_SUCCESS, status, payload: data });
+            dispatch({type: CREATE_CART_SUCCESS, status, payload: data});
         } catch (error) {
             dispatch({
                 type: CREATE_CART_FAIL,
@@ -74,10 +71,10 @@ export const addToCart = (itemToAdd) => {
             type: ADD_TO_CART_REQUEST
         });
         try {
-            const { data, status } = await axios.post('/api/cart/addItem', itemToAdd);
+            const {data, status} = await axios.post('/api/cart/addItem', itemToAdd);
             dispatch(showAddToCartMessage());
             dispatch(fetchCart());
-            dispatch({ type: ADD_TO_CART_SUCCESS, status, payload: data });
+            dispatch({type: ADD_TO_CART_SUCCESS, status, payload: data});
         } catch (error) {
             dispatch({
                 type: ADD_TO_CART_FAIL,
@@ -94,9 +91,9 @@ export const updateItemQuantity = (inputData) => {
             type: UPDATE_ITEM_QUANTITY_REQUEST
         });
         try {
-            const { data, status } = await axios.post('/api/cart/updateItemQuantity', inputData);
+            const {data, status} = await axios.post('/api/cart/updateItemQuantity', inputData);
             dispatch(fetchCart());
-            dispatch({ type: UPDATE_ITEM_QUANTITY_SUCCESS, status, payload: data });
+            dispatch({type: UPDATE_ITEM_QUANTITY_SUCCESS, status, payload: data});
         } catch (error) {
             dispatch({
                 type: UPDATE_ITEM_QUANTITY_FAIL,
@@ -113,9 +110,9 @@ export const removeCartItem = (inputData) => {
             type: REMOVE_CART_ITEM_REQUEST
         });
         try {
-            const { data, status } = await axios.post('/api/cart/removeFromCart', inputData);
+            const {data, status} = await axios.post('/api/cart/removeFromCart', inputData);
             dispatch(fetchCart());
-            dispatch({ type: REMOVE_CART_ITEM_SUCCESS, status, payload: data });
+            dispatch({type: REMOVE_CART_ITEM_SUCCESS, status, payload: data});
         } catch (error) {
             dispatch({
                 type: REMOVE_CART_ITEM_FAIL,
@@ -130,7 +127,7 @@ export const showAddToCartMessage = () => {
         dispatch({
             type: SHOW_ADD_TO_MESSAGE
         });
-        setTimeout(()=> {
+        setTimeout(() => {
             dispatch({
                 type: HIDE_ADD_TO_MESSAGE
             });

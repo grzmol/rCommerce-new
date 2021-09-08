@@ -31,7 +31,7 @@ const CategoryDashboardHeaderComponent = (props) => {
         setDataReady(false);
         axios.post('/api/category', categoryData).then(resp => {
             setDataReady(true);
-            if(resp.status === 200){
+            if (resp.status === 200) {
                 props.fetchAction();
                 closeModal();
             }
@@ -58,26 +58,30 @@ const CategoryDashboardHeaderComponent = (props) => {
             >
                 <Paper className={'new-category-modal'}>
                     <div style={{display: dataReady ? 'none' : 'false'}}>
-                        <LoaderComponent />
+                        <LoaderComponent/>
                     </div>
                     <div className={'category-modal-content'} style={{opacity: dataReady ? '100' : '0'}}>
                         <h2>{t('CategoryDashboard_NewItem')}</h2>
                         <form id="new-product-form" action="POST" onSubmit={saveCategory}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
-                                    <TextField name="name" required id="standard-required" label={t('CategoryTable_Name')}
+                                    <TextField name="name" required id="standard-required"
+                                               label={t('CategoryTable_Name')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField name="desc" required id="standard-required" label={t('CategoryTable_Desc')}
+                                    <TextField name="desc" required id="standard-required"
+                                               label={t('CategoryTable_Desc')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField name="displayNameEN" required id="standard-required" label={t('CategoryTable_DisplayNamePL')}
+                                    <TextField name="displayNameEN" required id="standard-required"
+                                               label={t('CategoryTable_DisplayNamePL')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField name="displayNamePL" required id="standard-required" label={t('CategoryTable_DisplayNameEN')}
+                                    <TextField name="displayNamePL" required id="standard-required"
+                                               label={t('CategoryTable_DisplayNameEN')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12} style={{textAlign: 'center'}}>

@@ -4,7 +4,7 @@ import {withTranslation} from "react-i18next";
 import {withRouter} from "react-router-dom";
 
 import "./orderConfirmation.css"
-import {Container, Divider, List, ListItem, ListItemText, Paper} from "@material-ui/core";
+import {Container, Divider, List, ListItem, ListItemText} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import CartItemComponent from "../Cart/CartItem/cartItem";
@@ -17,16 +17,16 @@ const OrderConfirmationComponent = ({history, ...props}) => {
     const orderId = query.get('order');
 
     useEffect(() => {
-        if(!order){
+        if (!order) {
             axios.get('/api/order/getOne/' + orderId).then(resp => {
-                if(resp.status === 200 && resp.data){
+                if (resp.status === 200 && resp.data) {
                     setOrder(resp.data);
                 }
             }).catch(err => {
                 console.error(err)
             });
         }
-        if(!productsForItems){
+        if (!productsForItems) {
             fetchProductsForItems();
         }
     })
@@ -37,7 +37,7 @@ const OrderConfirmationComponent = ({history, ...props}) => {
 
 
         axios.post('/api/product/getMany', {productIds: productsToFetch}).then(resp => {
-            if(resp.status === 200 && resp.data){
+            if (resp.status === 200 && resp.data) {
                 setProductsForItems(resp.data);
             }
         }).catch(err => {
@@ -45,7 +45,10 @@ const OrderConfirmationComponent = ({history, ...props}) => {
         });
     }
 
-    const orderAddress = order && order.orderAddress || {};
+    let orderAddress = {};
+    if(order && order.orderAddress){
+        orderAddress = order.orderAddress;
+    }
     return (
         <div className="order-confirmation-container">
             <Container>
@@ -56,36 +59,37 @@ const OrderConfirmationComponent = ({history, ...props}) => {
                         <h4>{t('Checkout_AddressSection')}</h4>
                         <List>
                             <ListItem>
-                                <ListItemText primary={t('Address_Name')} secondary={orderAddress.name} />
+                                <ListItemText primary={t('Address_Name')} secondary={orderAddress.name}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                             <ListItem>
-                                <ListItemText primary={t('Address_LastName')} secondary={orderAddress.lastName} />
+                                <ListItemText primary={t('Address_LastName')} secondary={orderAddress.lastName}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                             <ListItem>
-                                <ListItemText primary={t('Address_Line1')} secondary={orderAddress.addressline1} />
+                                <ListItemText primary={t('Address_Line1')} secondary={orderAddress.addressline1}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                             <ListItem>
-                                <ListItemText primary={t('Address_City')} secondary={orderAddress.city} />
+                                <ListItemText primary={t('Address_City')} secondary={orderAddress.city}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                             <ListItem>
-                                <ListItemText primary={t('Address_PostalCode')} secondary={orderAddress.postalCode} />
+                                <ListItemText primary={t('Address_PostalCode')} secondary={orderAddress.postalCode}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                             <ListItem>
-                                <ListItemText primary={t('Address_Country')} secondary={orderAddress.country} />
+                                <ListItemText primary={t('Address_Country')} secondary={orderAddress.country}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                         </List>
 
                     </Grid>
                     <Grid item xs={9}>
                         <h4>{t('CartPage_Header')}</h4>
                         {order && order.orderItems.map(item => (
-                            <CartItemComponent key={item.product} products={productsForItems} readOnly={true} data={item}/>
+                            <CartItemComponent key={item.product} products={productsForItems} readOnly={true}
+                                               data={item}/>
                         ))}
                     </Grid>
                 </Grid>

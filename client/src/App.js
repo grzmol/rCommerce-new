@@ -35,9 +35,9 @@ class App extends React.Component {
                         <Route path="/cart" component={CartPage}/>
                         <Route path="/productList" component={ProductListPage}/>
                         <Route path="/account" component={AccountPage}/>
-                        <Route path="/product/:productCode" component={ProductDetailsPage} />
-                        <Route path="/checkout" component={CheckoutPage} />
-                        <Route path="/orderConfirmation" component={OrderConfirmationPage} />
+                        <Route exact path="/product/:productCode" component={ProductDetailsPage}/>
+                        <Route path="/checkout" component={CheckoutPage}/>
+                        <Route path="/orderConfirmation" component={OrderConfirmationPage}/>
                     </Switch>
                     <FooterComponent pagesWithoutFooter={pagesWithoutFooter}/>
                 </div>

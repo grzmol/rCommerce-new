@@ -11,10 +11,12 @@ class BreadcrumbComponent extends React.Component {
             <div className="breadcrumb">
                 <Link to="/">{t('Breadcrumb_Home')}</Link>
                 {
-                    this.props.category && (<span>&nbsp;/&nbsp;<Link to={'/category/'+this.props.category}>{this.props.category}</Link></span>)
+                    this.props.category && (<span>&nbsp;/&nbsp;<Link
+                        to={'/productList?category=' + this.props.category}>{this.props.category}</Link></span>)
                 }
                 {
-                    this.props.product && (<span>&nbsp;/&nbsp;<Link to={'/product/'+this.props.product.productCode}>{this.props.product.name}</Link></span>)
+                    this.props.product && (<span>&nbsp;/&nbsp;<Link
+                        to={'/product/' + this.props.product.productCode}>{this.props.product.name}</Link></span>)
                 }
             </div>
         )

@@ -10,10 +10,10 @@ import {withTranslation} from 'react-i18next';
 
 
 const ConfirmationDialogComponent = (props) => {
-    const { t } = props;
+    const {t} = props;
 
     const handleAgreeAction = () => {
-       props.agree();
+        props.agree();
     }
     const handleDisagreeAction = () => {
         props.disagree();
@@ -28,15 +28,15 @@ const ConfirmationDialogComponent = (props) => {
             >
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        { t('ConfirmationDialog_Text') }
+                        {t('ConfirmationDialog_Text')}
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleDisagreeAction} color="primary">
-                        { t('ConfirmationDialog_Disagree') }
+                        {t('ConfirmationDialog_Disagree')}
                     </Button>
                     <Button onClick={handleAgreeAction} color="primary" autoFocus>
-                        { t('ConfirmationDialog_Agree') }
+                        {t('ConfirmationDialog_Agree')}
                     </Button>
                 </DialogActions>
             </Dialog>

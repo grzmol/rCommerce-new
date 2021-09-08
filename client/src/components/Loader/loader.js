@@ -7,7 +7,7 @@ const LoaderComponent = (props) => {
 
     return (
         <div className={'page-loader'} {...props}>
-            <CircularProgress />
+            <CircularProgress/>
         </div>
     );
 };

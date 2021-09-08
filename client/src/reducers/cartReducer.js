@@ -21,7 +21,7 @@ const cartReducer = (state = initState, action) => {
         case types.FETCH_CART_SUCCESS:
             return {...state, fetching: false, cart: action.payload};
         case types.FETCH_CART_FAIL:
-            return { ...state, fetching: false, error: action.payload };
+            return {...state, fetching: false, error: action.payload};
         case types.ADD_TO_CART_REQUEST:
             return {...state, fetching: true};
         case types.ADD_TO_CART_SUCCESS:
@@ -51,7 +51,5 @@ const cartReducer = (state = initState, action) => {
         default:
             return state;
     }
-    return state;
-
 }
 export default cartReducer;

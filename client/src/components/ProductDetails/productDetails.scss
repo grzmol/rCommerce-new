@@ -4,24 +4,30 @@
   --content-background-color: $color-background !important;
   z-index: 3;
 }
+
 .product-details-wrapper {
   margin-top: 100px;
-  .carousel-image-wrapper{
+
+  .carousel-image-wrapper {
     width: inherit;
     height: inherit;
     text-align: center;
+
     .carousel-image {
       width: auto;
       height: 100%;
     }
   }
+
   .section-label {
     font-weight: bold;
   }
+
   .product-details-desc {
     min-height: 150px;
     padding-bottom: 20px;
   }
+
   .last-viewed-products-container {
     margin: 200px -15px 0;
   }

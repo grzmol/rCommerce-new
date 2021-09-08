@@ -31,7 +31,7 @@ const MenuDashboardHeaderComponent = (props) => {
         setDataReady(false);
         axios.post('/api/menu', menuData).then(resp => {
             setDataReady(true);
-            if(resp.status === 200){
+            if (resp.status === 200) {
                 props.fetchAction();
                 closeModal();
             }
@@ -58,7 +58,7 @@ const MenuDashboardHeaderComponent = (props) => {
             >
                 <Paper className={'new-menu-modal'}>
                     <div style={{display: dataReady ? 'none' : 'false'}}>
-                        <LoaderComponent />
+                        <LoaderComponent/>
                     </div>
                     <div className={'product-modal-content'} style={{opacity: dataReady ? '100' : '0'}}>
                         <h2>{t('MenuDashboard_NewItem')}</h2>
@@ -73,11 +73,13 @@ const MenuDashboardHeaderComponent = (props) => {
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField name="displayNamePL" required id="standard-required" label={t('MenuTable_DisplayNamePL')}
+                                    <TextField name="displayNamePL" required id="standard-required"
+                                               label={t('MenuTable_DisplayNamePL')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <TextField name="displayNameEN" required id="standard-required" label={t('MenuTable_DisplayNameEN')}
+                                    <TextField name="displayNameEN" required id="standard-required"
+                                               label={t('MenuTable_DisplayNameEN')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
                                 <Grid item xs={12} style={{textAlign: 'center'}}>

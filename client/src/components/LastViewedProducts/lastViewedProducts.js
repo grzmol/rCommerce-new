@@ -5,7 +5,10 @@ import {Container} from "@material-ui/core";
 import "./lastViewedProducts.css";
 
 import ProductGridItem from "../ProductGridItem/productGridItem";
+import AuthService from "../../services/authService";
 
+const auth = new AuthService();
+const currentUser = auth.getProfile();
 
 class LastViewedProductsComponent extends React.Component {
     constructor(props) {
@@ -16,12 +19,13 @@ class LastViewedProductsComponent extends React.Component {
             products: []
         }
     }
+
     componentDidMount() {
         let productIdsJSON = sessionStorage.getItem('lastViewed') || "[]";
         let productIds = JSON.parse(productIdsJSON);
 
         axios.post('/api/product/getMany', {productIds: productIds}).then(resp => {
-            if(resp.status === 200 && resp.data){
+            if (resp.status === 200 && resp.data) {
                 this.setState({products: resp.data, dataReady: true});
             }
         }).catch(err => {
@@ -38,8 +42,8 @@ class LastViewedProductsComponent extends React.Component {
                 <div className="last-viewed-products-container">
                     <h2>{t('LastViewedProducts_Title')}</h2>
                     <div className="last-viewed-products-content">
-                        {this.state.products.map( item => (
-                            <ProductGridItem key={item.productCode} currentUser={this.props.currentUser} product={item} />
+                        {this.state.products.map(item => (
+                            <ProductGridItem key={item.productCode} currentUser={currentUser} product={item}/>
                         ))}
                     </div>
                 </div>
@@ -47,6 +51,6 @@ class LastViewedProductsComponent extends React.Component {
 
         )
     }
-};
+}
 
 export default withTranslation()(LastViewedProductsComponent);

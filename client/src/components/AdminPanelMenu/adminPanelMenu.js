@@ -9,14 +9,14 @@ import {Divider} from "@material-ui/core";
 const AdminPanelMenuComponent = (props) => {
     return (
         <div className={'admin-menu'}>
-            <div className={'page-logo'} />
+            <div className={'page-logo'}/>
             <Divider/>
-            <MenuItemComponent icon={faBoxes} name={'MenuItem_Products'} link={'/admin/products'} />
-            <MenuItemComponent icon={faFolderOpen} name={'MenuItem_Categories'} link={'/admin/category'} />
-            <MenuItemComponent icon={faShoppingBasket} name={'MenuItem_Orders'} link={'/admin/orders'} />
-            <MenuItemComponent icon={faUsers} name={'MenuItem_Customers'} link={'/admin/customers'} />
-            <MenuItemComponent icon={faBars} name={'MenuItem_Menu'} link={'/admin/menu'} />
-            <MenuItemComponent icon={faImage} name={'MenuItem_Images'} link={'/admin/images'} />
+            <MenuItemComponent icon={faBoxes} name={'MenuItem_Products'} link={'/admin/products'}/>
+            <MenuItemComponent icon={faFolderOpen} name={'MenuItem_Categories'} link={'/admin/category'}/>
+            <MenuItemComponent icon={faShoppingBasket} name={'MenuItem_Orders'} link={'/admin/orders'}/>
+            <MenuItemComponent icon={faUsers} name={'MenuItem_Customers'} link={'/admin/customers'}/>
+            <MenuItemComponent icon={faBars} name={'MenuItem_Menu'} link={'/admin/menu'}/>
+            <MenuItemComponent icon={faImage} name={'MenuItem_Images'} link={'/admin/images'}/>
             <Divider/>
 
         </div>

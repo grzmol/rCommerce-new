@@ -6,12 +6,15 @@
   text-align: center;
   padding: 15px;
   position: relative;
+
   & > a {
     text-decoration: none;
     color: $color-text-dark;
   }
+
   .item-image {
     width: 200px;
+
     & > img {
       max-width: 200px;
       height: auto;
@@ -29,6 +32,7 @@
     overflow: hidden;
     height: 40px;
   }
+
   .item-add-to {
     position: absolute;
     right: 5px;
@@ -36,8 +40,8 @@
   }
 
   &:hover {
-    -webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.11);
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.11);
+    -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.11);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.11);
     border-radius: 10px;
   }
 }

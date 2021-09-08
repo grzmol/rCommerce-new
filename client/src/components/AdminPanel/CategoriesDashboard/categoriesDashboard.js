@@ -15,7 +15,7 @@ class CategoryDashboardComponent extends React.Component {
         this.fetchData = this.fetchData.bind(this);
     }
 
-    fetchData(){
+    fetchData() {
         axios.get('/api/category').then(resp => {
             this.setState({
                 categories: resp.data,
@@ -35,9 +35,10 @@ class CategoryDashboardComponent extends React.Component {
                     this.state.dataReady ?
                         <div>
                             <CategoryDashboardHeaderComponent fetchAction={this.fetchData}/>
-                            <CategoryDashboardListComponent categories={this.state.categories} fetchAction={this.fetchData}/>
+                            <CategoryDashboardListComponent categories={this.state.categories}
+                                                            fetchAction={this.fetchData}/>
                         </div>
-                        : <LoaderComponent />
+                        : <LoaderComponent/>
                 }
 
             </div>

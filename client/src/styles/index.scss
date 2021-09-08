@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap');
 @import "colors";
+
 #root {
   position: relative;
   min-height: 100vh;
@@ -9,6 +10,7 @@
   min-height: 100vh;
   padding-bottom: 160px;
 }
+
 body {
   margin: 0 auto;
   font-family: 'Open Sans', sans-serif;
@@ -17,6 +19,7 @@ body {
   overflow-x: hidden;
 
 }
-h1,h2,h3,h4,h5,h6 {
+
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Roboto', sans-serif;
 }

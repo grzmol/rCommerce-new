@@ -13,7 +13,7 @@ import ImageDashboardComponent from "./ImageDashboard/imageDashboard";
 class AdminPanelComponent extends React.Component {
 
     componentDidMount() {
-        if(!this.props.isAdmin){
+        if (!this.props.isAdmin) {
             this.props.history.replace('/');
         }
     }
@@ -21,14 +21,14 @@ class AdminPanelComponent extends React.Component {
     render() {
         return (
             <div className={'admin-panel'}>
-                <AdminPanelMenuComponent />
+                <AdminPanelMenuComponent/>
                 <div className={'admin-dashboard'}>
-                    <Route path={`${this.props.match.path}/products`} component={ProductDashboardComponent} />
-                    <Route path={`${this.props.match.path}/orders`} component={OrdersDashboardComponent} />
-                    <Route path={`${this.props.match.path}/category`} component={CategoryDashboardComponent} />
-                    <Route path={`${this.props.match.path}/customers`} component={CustomersDashboardComponent} />
-                    <Route path={`${this.props.match.path}/menu`} component={MenuDashboardComponent} />
-                    <Route path={`${this.props.match.path}/images`} component={ImageDashboardComponent} />
+                    <Route path={`${this.props.match.path}/products`} component={ProductDashboardComponent}/>
+                    <Route path={`${this.props.match.path}/orders`} component={OrdersDashboardComponent}/>
+                    <Route path={`${this.props.match.path}/category`} component={CategoryDashboardComponent}/>
+                    <Route path={`${this.props.match.path}/customers`} component={CustomersDashboardComponent}/>
+                    <Route path={`${this.props.match.path}/menu`} component={MenuDashboardComponent}/>
+                    <Route path={`${this.props.match.path}/images`} component={ImageDashboardComponent}/>
                 </div>
             </div>
         );

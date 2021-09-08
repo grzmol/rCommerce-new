@@ -18,7 +18,6 @@ const ImageDashboardHeaderComponent = (props) => {
     const [open, setOpen] = React.useState(false);
     const [imageData, setImageData] = React.useState({});
     const [dataReady, setDataReady] = React.useState(true);
-    const [isImageUploading, setIsImageUploading] = React.useState(false);
     const [type, setType] = React.useState('promo');
     const [product, setProduct] = React.useState('');
 
@@ -40,7 +39,7 @@ const ImageDashboardHeaderComponent = (props) => {
 
         axios.post('/api/image', imageData).then(resp => {
             setDataReady(true);
-            if(resp.status === 200){
+            if (resp.status === 200) {
                 props.fetchAction();
                 closeModal();
             }
@@ -69,11 +68,8 @@ const ImageDashboardHeaderComponent = (props) => {
 
     const handleImageChange = (event) => {
         let file = event.target.files[0];
-        setIsImageUploading(true);
         getBase64(file).then(
             data => {
-                setIsImageUploading(false);
-
                 setImageData(_.extend(imageData, {
                     imgBase64: data
                 }));
@@ -85,9 +81,9 @@ const ImageDashboardHeaderComponent = (props) => {
         let typeInput = event.target.value;
 
         setType(typeInput);
-        if(typeInput === "product" && props.products && props.products.length > 0){
+        if (typeInput === "product" && props.products && props.products.length > 0) {
             setProduct(props.products[0].productCode);
-        }else{
+        } else {
             setProduct('');
         }
 
@@ -95,8 +91,6 @@ const ImageDashboardHeaderComponent = (props) => {
     const handleProductChange = (event) => {
         setProduct(event.target.value);
     };
-
-
 
 
     return (
@@ -110,7 +104,7 @@ const ImageDashboardHeaderComponent = (props) => {
             >
                 <Paper className={'new-image-modal'}>
                     <div style={{display: dataReady ? 'none' : 'false'}}>
-                        <LoaderComponent />
+                        <LoaderComponent/>
                     </div>
                     <div className={'product-modal-content'} style={{opacity: dataReady ? '100' : '0'}}>
                         <h2>{t('ImageDashboard_NewItem')}</h2>
@@ -118,7 +112,8 @@ const ImageDashboardHeaderComponent = (props) => {
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <label htmlFor="img">{t('ProductModal_SelectImage')}&nbsp;&nbsp;</label>
-                                    <input type="file" id="img" name="img" accept="image/*" onChange={handleImageChange}/>
+                                    <input type="file" id="img" name="img" accept="image/*"
+                                           onChange={handleImageChange}/>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <InputLabel id="demo-simple-select-label">{t('ImageTable_Type')}</InputLabel>
@@ -134,21 +129,22 @@ const ImageDashboardHeaderComponent = (props) => {
                                         <MenuItem value={'product'}>{t('ImageType_Product')}</MenuItem>
                                     </Select>
                                 </Grid>
-                                { type === "product" && <Grid item xs={6}>
-                                        <InputLabel id="demo-simple-select-label">{t('ImageType_Product')}</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={product}
-                                            onChange={handleProductChange}
-                                            variant={'outlined'}
-                                            fullWidth
-                                        >
-                                            {
-                                                props.products.map(item => <MenuItem value={item.productCode}>{item.name}</MenuItem>)
-                                            }
-                                        </Select>
-                                    </Grid>
+                                {type === "product" && <Grid item xs={6}>
+                                    <InputLabel id="demo-simple-select-label">{t('ImageType_Product')}</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={product}
+                                        onChange={handleProductChange}
+                                        variant={'outlined'}
+                                        fullWidth
+                                    >
+                                        {
+                                            props.products.map(item => <MenuItem
+                                                value={item.productCode}>{item.name}</MenuItem>)
+                                        }
+                                    </Select>
+                                </Grid>
                                 }
                                 <Grid item xs={12}>
                                     <TextField

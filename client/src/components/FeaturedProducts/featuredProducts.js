@@ -15,9 +15,10 @@ class FeaturedProductsComponent extends React.Component {
             products: []
         }
     }
+
     componentDidMount() {
         axios.get('/api/product?isFeatured=true').then(resp => {
-            if(resp.status === 200 && resp.data){
+            if (resp.status === 200 && resp.data) {
                 this.setState({products: resp.data});
             }
             this.setState({dataReady: true});
@@ -35,8 +36,9 @@ class FeaturedProductsComponent extends React.Component {
                 <div className="featured-products-container">
                     <h2>{t('FeaturedProducts_Title')}</h2>
                     <div className="featured-products-content">
-                        {this.state.products.map( item => (
-                            <ProductGridItem key={item.productCode} currentUser={this.props.currentUser} product={item} />
+                        {this.state.products.map(item => (
+                            <ProductGridItem key={item.productCode} currentUser={this.props.currentUser}
+                                             product={item}/>
                         ))}
                     </div>
                 </div>
@@ -44,6 +46,6 @@ class FeaturedProductsComponent extends React.Component {
 
         )
     }
-};
+}
 
 export default withTranslation()(FeaturedProductsComponent);

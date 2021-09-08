@@ -1,5 +1,6 @@
 import express from "express";
 import ProductModel from "../models/product";
+import CartModel from "../models/cart";
 let router = express.Router();
 
 const ProductController = () => {
@@ -19,6 +20,13 @@ const ProductController = () => {
         res.json( { product } );
     });
 
+
+    router.get('/getByCategory/:category', async (req, res) => {
+        let regex = new RegExp(["^", req.params.category, "$"].join(""), "i");
+        let products = await ProductModel.find({category:  regex});
+        res.json(products);
+    });
+
     router.post('/getMany', async (req, res) => {
         let products = await ProductModel.find({_id: {$in: req.body.productIds} });
         res.json(products);
@@ -32,7 +40,8 @@ const ProductController = () => {
             price: req.body.price,
             category: req.body.category,
             image: req.body.image,
-            isFeatured: req.body.isFeatured
+            isFeatured: req.body.isFeatured,
+            shortDesc: req.body.shortDesc
         };
         let newProduct = new ProductModel(product);
         await newProduct.save(err => {
@@ -40,6 +49,26 @@ const ProductController = () => {
             res.json(newProduct);
         });
     });
+
+    router.post('/update', async (req, res) => {
+        let product = {
+            _id: req.body._id,
+            name: req.body.name,
+            productCode: req.body.productCode,
+            desc: req.body.desc,
+            price: req.body.price,
+            category: req.body.category,
+            image: req.body.image,
+            isFeatured: req.body.isFeatured,
+            shortDesc: req.body.shortDesc
+        };
+
+
+        let updatedProduct = await ProductModel.findOneAndUpdate({_id: product._id}, product);
+        res.json(updatedProduct);
+    });
+
+
     return router;
 }
 

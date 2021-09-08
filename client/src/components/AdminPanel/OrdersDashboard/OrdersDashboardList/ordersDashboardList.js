@@ -1,21 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import MaterialTable from 'material-table'
 import {withTranslation} from 'react-i18next';
-import {getTranslation} from '../../../locales/materialTable';
+import {getTranslation} from '../../../../locales/materialTable';
 import axios from "axios";
-import AuthService from "../../../services/authService";
-import OrderDetailsComponent from "./OrderDetails/orderDetails";
+import OrderDetailsComponent from "../../../MyAccount/MyAccountOrders/OrderDetails/orderDetails";
 
-const auth = new AuthService();
-const currentUser = auth.getProfile();
 
-const MyAccountOrdersComponent = (props) => {
+const OrdersDashboardListComponent = (props) => {
     const {t} = props;
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
         if (orders.length === 0) {
-            axios.post('/api/order/', {user: currentUser.username}).then(resp => {
+            axios.get('/api/order/').then(resp => {
                 if (resp.status === 200) {
                     setOrders(resp.data);
                 }
@@ -29,6 +26,7 @@ const MyAccountOrdersComponent = (props) => {
                 title={t('MyAccount_Orders')}
                 columns={[
                     {title: t('MyOrders_OrderId'), field: '_id'},
+                    {title: t('OrdersDashboard_User'), field: 'user'},
                     {
                         title: t('MyOrders_OrderStatus'),
                         field: 'status',
@@ -50,4 +48,4 @@ const MyAccountOrdersComponent = (props) => {
     )
 };
 
-export default withTranslation()(MyAccountOrdersComponent);
+export default withTranslation()(OrdersDashboardListComponent);

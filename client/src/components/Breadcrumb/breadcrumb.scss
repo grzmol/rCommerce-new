@@ -1,13 +1,15 @@
 .breadcrumb {
-  &>span:last-child {
+  & > span:last-child {
     a {
       color: gray;
       pointer-events: none;
     }
   }
+
   a {
     text-decoration: none;
     color: #3b3b3b;
+
     &:hover {
       text-decoration: underline;
     }

@@ -19,13 +19,13 @@ const MyAccountInformationComponent = (props) => {
                     <Grid item xs={12} md={5} lg={4}>
                         <List>
                             <ListItem>
-                                <ListItemText primary={t('Username')} secondary={currentUser.username} />
+                                <ListItemText primary={t('Username')} secondary={currentUser.username}/>
                             </ListItem>
-                            <Divider />
+                            <Divider/>
                             <ListItem>
-                                <ListItemText primary={t('Email')} secondary={currentUser.email} />
+                                <ListItemText primary={t('Email')} secondary={currentUser.email}/>
                                 <IconButton aria-label="delete">
-                                    <EditIcon />
+                                    <EditIcon/>
                                 </IconButton>
                             </ListItem>
                         </List>

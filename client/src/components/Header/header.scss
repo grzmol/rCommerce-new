@@ -1,8 +1,10 @@
 @import "../../styles/colors";
+
 .hamburger-menu__open {
   & > .hamburger-menu {
     left: 0;
   }
+
   & > .page-header {
     width: calc(100% - 400px);
     left: 400px;
@@ -23,12 +25,14 @@
   right: 0;
   transition: background-color 300ms linear, color 300ms linear, left 1s, width 1s;
   z-index: 15;
+
   & > * {
     width: calc(100% / 3);
     padding: 0 45px;
   }
+
   &.header-dark-background {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     color: white;
 
     .page-logo {
@@ -39,18 +43,23 @@
       margin-left: calc(50% - 130px);
     }
   }
+
   .hamburger-menu-open {
     font-size: 30px;
+
     .hamburger-menu-icon {
       cursor: pointer;
     }
   }
+
   .page-header-section-center {
     text-align: center;
   }
+
   .page-header-section-right {
     text-align: right;
   }
+
   .page-logo {
     height: 50px;
     background: url("../../assets/rCommerce-logos_black.png") no-repeat;

@@ -19,23 +19,23 @@ class RegisterPage extends Component {
         this.state = {
             username: '',
             password: '',
-            email:'',
+            email: '',
             passwordCorrect: true,
         }
     }
 
-    passwordValidation(e){
+    passwordValidation(e) {
         let value = e.target.value;
-        if (/^^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,15}$$/.test(value)){
-            this.setState({ passwordCorrect: true });
-        }else{
-            this.setState({ passwordCorrect: false });
+        if (/^^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,15}$$/.test(value)) {
+            this.setState({passwordCorrect: true});
+        } else {
+            this.setState({passwordCorrect: false});
         }
 
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({[e.target.name]: e.target.value});
     }
 
-    handleChange(e){
+    handleChange(e) {
         e.preventDefault();
         this.setState({[e.target.name]: e.target.value});
     }
@@ -48,7 +48,7 @@ class RegisterPage extends Component {
     }
 
     render() {
-        const { t } = this.props;
+        const {t} = this.props;
         return (
             <div className="login-page" style={{padding: '40px'}}>
                 <Container maxWidth="xs">
@@ -57,7 +57,7 @@ class RegisterPage extends Component {
                             <Grid item xs={12}>
                                 <Grid container spacing={2}>
                                     <Grid container alignItems="center" justify="center" xs="12">
-                                        <Avatar src="/broken-image.jpg" />
+                                        <Avatar src="/broken-image.jpg"/>
                                     </Grid>
 
                                     <Grid item xs={12}>
@@ -100,7 +100,8 @@ class RegisterPage extends Component {
                                 </Grid>
                             </Grid>
                             <Grid item xs={12}>
-                                <Button color="secondary" fullWidth type="submit" variant="contained" disabled={!this.state.passwordCorrect || this.state.username.length < 1 || this.state.email.length < 1 || this.state.password.length < 1}>
+                                <Button color="secondary" fullWidth type="submit" variant="contained"
+                                        disabled={!this.state.passwordCorrect || this.state.username.length < 1 || this.state.email.length < 1 || this.state.password.length < 1}>
                                     {t('Register_Button')}
                                 </Button>
                             </Grid>

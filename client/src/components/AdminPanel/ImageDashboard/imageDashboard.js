@@ -17,9 +17,9 @@ export default class ImageDashboardComponent extends React.Component {
         this.fetchData = this.fetchData.bind(this);
     }
 
-    fetchData(){
+    fetchData() {
         axios.get('/api/image').then(resp => {
-            if(resp.data && resp.status == 200){
+            if (resp.data && resp.status === 200) {
                 this.setState({
                     images: resp.data
                 });
@@ -44,10 +44,10 @@ export default class ImageDashboardComponent extends React.Component {
                 {
                     this.state.dataReady ?
                         <div>
-                            <ImageDashboardHeaderComponent fetchAction={this.fetchData} products={this.state.products} />
-                            <ImageDashboardListComponent images={this.state.images}  fetchAction={this.fetchData}/>
+                            <ImageDashboardHeaderComponent fetchAction={this.fetchData} products={this.state.products}/>
+                            <ImageDashboardListComponent images={this.state.images} fetchAction={this.fetchData}/>
                         </div>
-                        : <LoaderComponent />
+                        : <LoaderComponent/>
                 }
 
             </div>

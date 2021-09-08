@@ -17,7 +17,7 @@ export default class HeroImageComponent extends React.Component {
     componentDidMount() {
 
         axios.get('/api/image?type=promo').then(resp => {
-            if(resp.status === 200 && resp.data){
+            if (resp.status === 200 && resp.data) {
                 this.setState({promoImages: resp.data});
             }
             this.setState({dataReady: true});
@@ -31,7 +31,8 @@ export default class HeroImageComponent extends React.Component {
     render() {
         let promoImg = _.isArray(this.state.promoImages) && this.state.promoImages.length > 0 ? this.state.promoImages[0] : {};
         return (
-            <LazyHero imageSrc={promoImg.imgBase64} opacity={0.4} minHeight="82vh" isFixed={true} className='lazy-hero-container'>
+            <LazyHero imageSrc={promoImg.imgBase64} opacity={0.4} minHeight="82vh" isFixed={true}
+                      className='lazy-hero-container'>
                 <h1>{promoImg.desc}</h1>
             </LazyHero>
         )
