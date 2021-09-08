@@ -34,7 +34,7 @@ class LastViewedProductsComponent extends React.Component {
         const {t} = this.props;
 
         return (
-            <Container style={{display: this.state.dataReady ? 'block' : 'none'}}>
+            <Container style={{display: this.state.products.length > 0 ? 'block' : 'none'}}>
                 <div className="last-viewed-products-container">
                     <h2>{t('LastViewedProducts_Title')}</h2>
                     <div className="last-viewed-products-content">

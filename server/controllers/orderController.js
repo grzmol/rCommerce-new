@@ -5,8 +5,8 @@ let router = express.Router();
 
 const OrderController = () => {
 
-    router.get('/', async (req, res) => {
-        let orders = await Order.find({});
+    router.post('/', async (req, res) => {
+        let orders = await Order.find({user: req.body.user});
         res.json(orders);
     });
     router.get('/getOne/:id', async (req, res) => {
@@ -34,7 +34,8 @@ const OrderController = () => {
                 postalCode: req.body.postalCode,
                 country: req.body.country
             },
-            status: 'Placed'
+            status: 'Placed',
+            date: new Date()
         };
 
 

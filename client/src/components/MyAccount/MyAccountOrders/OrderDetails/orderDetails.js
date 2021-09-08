@@ -1,35 +1,23 @@
 import React, {useEffect, useState} from 'react';
 
 import {withTranslation} from "react-i18next";
-import {withRouter} from "react-router-dom";
-
-import "./orderConfirmation.css"
-import {Container, Divider, List, ListItem, ListItemText, Paper} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
+import {Container, Divider, List, ListItem, ListItemText} from "@material-ui/core";
+import CartItemComponent from "../../../Cart/CartItem/cartItem";
 import axios from "axios";
-import CartItemComponent from "../Cart/CartItem/cartItem";
 
-const OrderConfirmationComponent = ({history, ...props}) => {
-    const {t} = props;
-    const [order, setOrder] = useState(false);
+const OrderDetailsComponent = (props) => {
     const [productsForItems, setProductsForItems] = useState(false);
-    const query = new URLSearchParams(props.location.search);
-    const orderId = query.get('order');
+    const {t} = props;
+    const {orderAddress} = props.rowData;
+    const order = props.rowData;
+
 
     useEffect(() => {
-        if(!order){
-            axios.get('/api/order/getOne/' + orderId).then(resp => {
-                if(resp.status === 200 && resp.data){
-                    setOrder(resp.data);
-                }
-            }).catch(err => {
-                console.error(err)
-            });
-        }
         if(!productsForItems){
             fetchProductsForItems();
         }
-    })
+    });
 
     const fetchProductsForItems = () => {
         const orderItems = order && order.orderItems;
@@ -45,13 +33,13 @@ const OrderConfirmationComponent = ({history, ...props}) => {
         });
     }
 
-    const orderAddress = order && order.orderAddress || {};
     return (
-        <div className="order-confirmation-container">
+        <div className="myaccount-orderdetails-container">
             <Container>
-                <h1>{t('OrderConfirmation_Title')}</h1>
-                <span>{t('OrderConfirmation_Subtitle')}</span>
                 <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <h2>{t('Checkout_Title')}</h2>
+                    </Grid>
                     <Grid item xs={3}>
                         <h4>{t('Checkout_AddressSection')}</h4>
                         <List>
@@ -89,8 +77,10 @@ const OrderConfirmationComponent = ({history, ...props}) => {
                         ))}
                     </Grid>
                 </Grid>
+
             </Container>
+
         </div>
     );
 };
-export default withTranslation()(withRouter(OrderConfirmationComponent));
+export default withTranslation()(OrderDetailsComponent);

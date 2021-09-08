@@ -22,7 +22,7 @@
   left: 0;
   right: 0;
   transition: background-color 300ms linear, color 300ms linear, left 1s, width 1s;
-  z-index: 5;
+  z-index: 15;
   & > * {
     width: calc(100% / 3);
     padding: 0 45px;

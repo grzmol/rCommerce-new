@@ -16,7 +16,7 @@ const HeaderActionBarComponent = ({history, ...props}) => {
                 </Badge>
             </div>
             <div className='header-action-user'>
-                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account')} icon={faUser} />
+                <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account/information')} icon={faUser} />
             </div>
             {   props.isLoggedIn ?
                 <div className='header-action-logout'>

@@ -108,6 +108,15 @@
   "Checkout_AddressSection": "Adres wysyłki",
   "Checkout_ComeBack": "Kontynuuj zakupy",
   "OrderConfirmation_Title": "Dziękujemy za złożenie zamówienia!",
-  "OrderConfirmation_Subtitle": "Zamówienie zostanie przekazane do realizacji. Status zamówenia możesz sprawdzić na stronie profilu."
-
+  "OrderConfirmation_Subtitle": "Zamówienie zostanie przekazane do realizacji. Status zamówenia możesz sprawdzić na stronie profilu.",
+  "MyAccount_Orders": "Zamówienia",
+  "MyAccount_Information": "Dane",
+  "MyOrders_OrderId": "ID Zamówienia",
+  "MyOrders_OrderQuantity": "Ilość produktów",
+  "MyOrders_OrderStatus": "Status zamówienia",
+  "MyOrders_Total": "Kwota zamówienia",
+  "MyOrders_Date": "Data złożenia",
+  "OrderStatus_Placed": "W trakcie realizacji",
+  "OrderStatus_undefined": "Brak statusu",
+  "MyAccount_InformationComponent": "Dane użytkownika"
 }

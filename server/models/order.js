@@ -15,6 +15,7 @@ let orderSchema = new Schema({
     totalPrice: Number,
     totalQuantity: Number,
     order: String,
+    date: Date,
     orderAddress: {
         name: String,
         email: String,
