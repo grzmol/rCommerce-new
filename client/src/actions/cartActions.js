@@ -38,7 +38,6 @@ export const fetchCart = () => {
             if(status === 200 && data){
                 dispatch({ type: FETCH_CART_SUCCESS, status, payload: data });
             }else{
-                console.log('ddddddddddd')
                 dispatch(createCart());
             }
 
@@ -92,15 +91,15 @@ export const addToCart = (itemToAdd) => {
 export const updateItemQuantity = (inputData) => {
     return async dispatch => {
         dispatch({
-            type: REMOVE_CART_ITEM_REQUEST
+            type: UPDATE_ITEM_QUANTITY_REQUEST
         });
         try {
             const { data, status } = await axios.post('/api/cart/updateItemQuantity', inputData);
             dispatch(fetchCart());
-           // dispatch({ type: REMOVE_CART_ITEM_SUCCESS, status, payload: data });
+            dispatch({ type: UPDATE_ITEM_QUANTITY_SUCCESS, status, payload: data });
         } catch (error) {
             dispatch({
-                type: REMOVE_CART_ITEM_FAIL,
+                type: UPDATE_ITEM_QUANTITY_FAIL,
                 payload: error.toString()
             });
         }
@@ -111,15 +110,15 @@ export const updateItemQuantity = (inputData) => {
 export const removeCartItem = (inputData) => {
     return async dispatch => {
         dispatch({
-            type: UPDATE_ITEM_QUANTITY_REQUEST
+            type: REMOVE_CART_ITEM_REQUEST
         });
         try {
             const { data, status } = await axios.post('/api/cart/removeFromCart', inputData);
             dispatch(fetchCart());
-            dispatch({ type: UPDATE_ITEM_QUANTITY_SUCCESS, status, payload: data });
+            dispatch({ type: REMOVE_CART_ITEM_SUCCESS, status, payload: data });
         } catch (error) {
             dispatch({
-                type: UPDATE_ITEM_QUANTITY_FAIL,
+                type: REMOVE_CART_ITEM_FAIL,
                 payload: error.toString()
             });
         }

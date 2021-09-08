@@ -1,10 +1,11 @@
 import React from "react";
 import AuthWrapper from "../components/authWrapper";
+import MyAccountComponent from "../components/MyAccount/myAccount";
 
 const AccountPage = () => {
     return (
         <div>
-            account
+            <MyAccountComponent/>
         </div>
     );
 }
