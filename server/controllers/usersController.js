@@ -7,6 +7,16 @@ const UsersController = () => {
         let users = await UserModel.find();
         res.json(users);
     });
+
+
+
+    router.post('/changeMail', async (req, res) => {
+        let dataToChange = {
+            email: req.body.email
+        }
+        let user = await UserModel.findOneAndUpdate({username: req.body.username}, dataToChange);
+        res.json(user);
+    });
     return router;
 }
 

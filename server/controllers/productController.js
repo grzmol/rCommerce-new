@@ -10,6 +10,12 @@ const ProductController = () => {
         res.json(products);
     });
 
+    router.get('/search', async (req, res) => {
+        let products = await ProductModel.find({name: { $regex: req.query.query || '', $options: "i" }});
+        res.json(products);
+    });
+
+
     router.post('/delete', async (req, res) => {
         let products = await ProductModel.deleteMany({"_id": {$in: req.body.idsToRemove}});
         res.json(products);

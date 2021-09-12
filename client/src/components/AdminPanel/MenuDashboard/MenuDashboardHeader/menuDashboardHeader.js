@@ -77,11 +77,6 @@ const MenuDashboardHeaderComponent = (props) => {
                                                label={t('MenuTable_DisplayNamePL')}
                                                variant="outlined" fullWidth onInput={handleInputChange}/>
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <TextField name="displayNameEN" required id="standard-required"
-                                               label={t('MenuTable_DisplayNameEN')}
-                                               variant="outlined" fullWidth onInput={handleInputChange}/>
-                                </Grid>
                                 <Grid item xs={12} style={{textAlign: 'center'}}>
                                     <Button type="submit" variant="contained" color="primary">
                                         {t('MenuDashboard_AddMenuItem')}

@@ -27,14 +27,15 @@ const CartController = () => {
                 let newCartItem = {
                     product: productToAdd._id,
                     quantity: Number(req.body.quantity),
-                    itemPrice: productToAdd.price
+                    itemPrice: productToAdd.price,
+                    itemTotalPrice: Number(productToAdd.price) * Number(req.body.quantity)
                 }
                 userCart.cartItems.push(newCartItem);
             }
             let totalCartPrice = 0;
             let totalCartQty = 0;
             _.each(userCart.cartItems, cartItem => {
-                totalCartPrice += cartItem.itemPrice;
+                totalCartPrice += cartItem.itemTotalPrice;
                 totalCartQty += cartItem.quantity;
             });
             userCart.totalPrice = totalCartPrice;
@@ -81,20 +82,24 @@ const CartController = () => {
         let userCart = await CartModel.findOne({_id: req.body.cartId, isActive: true});
         let currCartItems = userCart.cartItems;
 
+        console.log('userCart', userCart)
+        console.log('currCartItems', currCartItems)
         if(userCart){
             let existingItem = _.filter(currCartItems, item => {
                 return String(item._id) === String(req.body.itemId);
             })[0] || {};
 
+            let existingItemCopy =  _.clone(existingItem);
             let userQty = req.body.quantity;
             if(req.body.quantity > 0){
                 existingItem.quantity = userQty;
+                existingItem.itemTotalPrice = existingItem.itemPrice * userQty;
             }
 
             let totalCartPrice = 0;
             let totalCartQty = 0;
             _.each(userCart.cartItems, cartItem => {
-                totalCartPrice += cartItem.itemPrice;
+                totalCartPrice += cartItem.itemTotalPrice;
                 totalCartQty += cartItem.quantity;
             });
             userCart.totalPrice = totalCartPrice;
@@ -110,7 +115,7 @@ const CartController = () => {
     router.post('/new', async (req, res) => {
         let cart = {
             user: req.body.user,
-            products: [],
+            cartItems: [],
             totalPrice: 0,
             totalQuantity: 0,
             isActive: true

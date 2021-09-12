@@ -55,6 +55,19 @@ const OrderController = () => {
             res.json(newOrder);
         })
     });
+
+
+    router.post('/update', async (req, res) => {
+        let order = {
+            _id: req.body._id,
+            status: req.body.status
+        };
+
+        let updatedOrder = await Order.findOneAndUpdate({_id: order._id}, order);
+        res.json(updatedOrder);
+
+    });
+
     return router;
 }
 

@@ -11,10 +11,10 @@ const currentUser = auth.getProfile();
 
 const MyAccountOrdersComponent = (props) => {
     const {t} = props;
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState(false);
 
     useEffect(() => {
-        if (orders.length === 0) {
+        if (!orders) {
             axios.post('/api/order/', {user: currentUser.username}).then(resp => {
                 if (resp.status === 200) {
                     setOrders(resp.data);
@@ -22,6 +22,12 @@ const MyAccountOrdersComponent = (props) => {
             })
         }
     })
+
+    const parseDate = (date) => {
+        let theDate = new Date( Date.parse(date));
+
+        return date ? theDate.toLocaleDateString() : '';
+    }
 
     return (
         <div>
@@ -36,9 +42,9 @@ const MyAccountOrdersComponent = (props) => {
                     },
                     {title: t('MyOrders_OrderQuantity'), field: 'totalQuantity'},
                     {title: t('MyOrders_Total'), field: 'totalPrice', render: rowData => rowData.totalPrice + " PLN"},
-                    {title: t('MyOrders_Date'), field: 'date'}
+                    {title: t('MyOrders_Date'), field: 'date', render: rowData => parseDate(rowData.date)}
                 ]}
-                data={orders}
+                data={orders || []}
                 localization={getTranslation()}
                 detailPanel={rowData => {
                     return (

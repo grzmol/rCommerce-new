@@ -11,7 +11,7 @@ const CartItemComponent = (props) => {
     const {t} = props;
     const [itemQty, setItemQty] = useState(props.data.quantity);
     const [qtyInputDisabled, setQtyInputDisabled] = useState(true);
-    const [itemTotalPrice, setItemPrice] = useState(props.data.itemPrice);
+    const [itemTotalPrice, setItemPrice] = useState(props.data.itemTotalPrice);
     const productForItem = _.filter(props.products, item => {
         return item._id === props.data.product
     })[0] || {};

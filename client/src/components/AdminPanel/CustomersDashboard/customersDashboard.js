@@ -30,6 +30,16 @@ const OrdersDashboardListComponent = (props) => {
                 ]}
                 data={users}
                 localization={getTranslation()}
+                actions={[
+                    {
+                        tooltip: t('Table_EditTooltip'),
+                        icon: 'edit',
+                        onClick: ()=>{}
+                    }
+                ]}
+                options={{
+                    actionsColumnIndex: -1
+                }}
             />
         </div>
     )
