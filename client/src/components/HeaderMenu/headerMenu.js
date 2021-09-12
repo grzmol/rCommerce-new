@@ -4,15 +4,22 @@ import axios from "axios";
 import LoaderComponent from "../Loader/loader";
 import MenuItem from '../MenuItem/menuItem'
 import _ from 'lodash';
+import {FormControl, Input, InputAdornment, InputLabel} from "@material-ui/core";
+import {Search} from "@material-ui/icons";
 
+import {withTranslation} from "react-i18next";
+import {withRouter} from "react-router-dom";
 
 class HeaderMenuComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             menuItems: [],
-            dataReady: false
+            dataReady: false,
+            searchString: ''
         }
+        this.handleSearchInput = this.handleSearchInput.bind(this);
+        this.searchForProduct = this.searchForProduct.bind(this);
     }
 
 
@@ -26,15 +33,38 @@ class HeaderMenuComponent extends React.Component {
             }
         });
     }
-
+    searchForProduct(event){
+        this.props.history.push('/productList?search=' + this.state.searchString);
+        this.props.closeMenu();
+    }
+    handleSearchInput(event){
+        let target = event.target;
+        this.setState({searchString: target.value});
+        if(event.keyCode === 13){
+            this.searchForProduct();
+        }
+    }
     componentDidMount() {
         this.fetchMenuItems();
     }
 
 
     render() {
+        const {t} = this.props;
         return (
             <div className="hamburger-menu">
+                <FormControl style={{width: "300px", margin: "50px"}}>
+                    <InputLabel htmlFor="input-with-icon-adornment">{t('Search_Title')}</InputLabel>
+                    <Input
+                        id="input-with-icon-adornment"
+                        startAdornment={
+                            <InputAdornment position="start"  onClick={this.searchForProduct}>
+                                <Search />
+                            </InputAdornment>
+                        }
+                        onKeyUp={this.handleSearchInput}
+                    />
+                </FormControl>
                 {
                     this.state.dataReady ?
                         <div>
@@ -51,4 +81,4 @@ class HeaderMenuComponent extends React.Component {
     }
 }
 
-export default HeaderMenuComponent;
+export default withTranslation()(withRouter(HeaderMenuComponent));

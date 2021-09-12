@@ -32,6 +32,20 @@ const CategoryController = () => {
             res.json(newCategory);
         })
     });
+
+    router.post('/update', async (req, res) => {
+        let category = {
+            _id: req.body._id,
+            name: req.body.name,
+            displayNamePL: req.body.displayNamePL,
+            displayNameEN: req.body.displayNameEN,
+            desc: req.body.desc
+        };
+
+
+        let updatedCategory = await Category.findOneAndUpdate({_id: category._id}, category);
+        res.json(updatedCategory);
+    });
     return router;
 }
 

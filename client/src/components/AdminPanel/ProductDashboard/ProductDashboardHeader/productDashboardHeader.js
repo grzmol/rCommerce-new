@@ -20,7 +20,7 @@ const ProductDashboardHeaderComponent = (props) => {
     return (
         <div className={'product-dashboard_header'}>
             <Button variant="contained" color="primary" onClick={openModal}>{t('ProductDashboard_NewProduct')}</Button>
-            <ProductModifyModalComponent open={modalOpen} fetchAction={props.fetchData} productId="" isEdit={false}
+            <ProductModifyModalComponent open={modalOpen} fetchAction={props.fetchAction} productId="" isEdit={false}
                                          closeModal={closeModal}/>
         </div>
     );

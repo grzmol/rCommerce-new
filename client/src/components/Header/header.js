@@ -57,6 +57,10 @@ const HeaderComponent = ({history, ...props}) => {
 
     }
 
+    const closeHamburgerMenu = () => {
+        setMenuOpenClass('');
+    }
+
     const displayHeader = () => {
         let pagesWithoutHeader = props.pagesWithoutHeader;
         let pathname = window.location.pathname;
@@ -105,7 +109,7 @@ const HeaderComponent = ({history, ...props}) => {
                                               logoutAction={history.logout}/>
                 </div>
             </div>
-            <HeaderMenuComponent/>
+            <HeaderMenuComponent closeMenu={closeHamburgerMenu}/>
             <Alert severity="success">{t('AddToCart_Success')}</Alert>
             <Backdrop style={backdropStyle} open={props.fetching}>
                 <CircularProgress color="inherit"/>

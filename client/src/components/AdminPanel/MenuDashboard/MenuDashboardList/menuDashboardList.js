@@ -42,7 +42,6 @@ const MenuDashboardListComponent = (props) => {
                 title={t('MenuItem_Menu')}
                 columns={[
                     {title: t('MenuTable_Name'), field: 'name'},
-                    {title: t('MenuTable_DisplayNameEN'), field: 'displayNameEN'},
                     {title: t('MenuTable_DisplayNamePL'), field: 'displayNamePL'},
                     {title: t('MenuTable_LinkURL'), field: 'url'}
                 ]}
@@ -53,11 +52,19 @@ const MenuDashboardListComponent = (props) => {
                 onSelectionChange={handleItemSelection}
                 actions={[
                     {
+                        tooltip: t('Table_EditTooltip'),
+                        icon: 'edit',
+                        onClick: ()=> {}
+                    },
+                    {
                         tooltip: t('Table_RemoveTooltip'),
                         icon: 'delete',
                         onClick: initRemoveAction
                     }
                 ]}
+                options={{
+                    actionsColumnIndex: -1
+                }}
                 localization={getTranslation()}
             />
             <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog}

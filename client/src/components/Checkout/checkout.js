@@ -32,6 +32,7 @@ class CheckoutForm extends React.Component {
             country: ''
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.goHome = this.goHome.bind(this);
     }
 
     handleSubmit = async event => {
@@ -78,6 +79,10 @@ class CheckoutForm extends React.Component {
             });
         }
     };
+
+    goHome() {
+        this.props.history.push('/');
+    }
 
     handleInputChange(event) {
         let currentTarget = event.target;
@@ -148,8 +153,7 @@ class CheckoutForm extends React.Component {
                             <Grid item xs={6}>
                                 <CartComponent isCheckout={true}/>
                                 <Grid item xs={12} style={{textAlign: 'center', marginTop: '20px'}}>
-                                    <Button type="submit" variant="contained" color="default"
-                                            disabled={!this.props.stripe} style={{marginRight: "15px"}}>
+                                    <Button type="button" variant="contained" color="default" style={{marginRight: "15px"}} onClick={this.goHome}>
                                         {t('Checkout_ComeBack')}
                                     </Button>
                                     <Button type="submit" variant="contained" color="primary"

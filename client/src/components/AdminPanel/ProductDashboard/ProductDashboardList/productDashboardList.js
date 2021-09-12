@@ -3,6 +3,7 @@ import MaterialTable from 'material-table'
 import {withTranslation} from 'react-i18next';
 import {getTranslation} from '../../../../locales/materialTable';
 import axios from "axios";
+import _ from "lodash";
 import ProductModifyModalComponent from "../ProductModifyModal/productModifyModal";
 
 const ProductDashboardListComponent = (props) => {
@@ -13,7 +14,12 @@ const ProductDashboardListComponent = (props) => {
     const closeModal = () => {
         setModalOpen(false);
     }
-    const openModal = () => {
+    const openModal = (editData) => {
+        if(editData && !_.isEmpty(editData)){
+            setItemData(editData);
+        }else{
+            setItemData({});
+        }
         setModalOpen(true);
     }
 
@@ -54,8 +60,7 @@ const ProductDashboardListComponent = (props) => {
                         icon: 'edit',
                         tooltip: t('Edit_Tooltip'),
                         onClick: (event, rowData) => {
-                            setItemData(rowData);
-                            openModal();
+                            openModal(rowData);
                         }
                     },
                     {

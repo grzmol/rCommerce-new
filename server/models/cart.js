@@ -8,7 +8,8 @@ let cartSchema = new Schema({
         {
             product: String,
             quantity: Number,
-            itemPrice: Number
+            itemPrice: Number,
+            itemTotalPrice: Number
         }
     ],
     totalPrice: Number,

@@ -70,9 +70,8 @@ const ProductModifyModalComponent = (props) => {
         let currentTarget = event.target;
         let inputName = currentTarget.getAttribute('name')
 
-        setProductData(_.extend(productData, {
-            [inputName]: currentTarget.value
-        }));
+        setProductData({...productData, [inputName]: currentTarget.value })
+
     }
 
     const getBase64 = (file) => {
