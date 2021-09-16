@@ -5,6 +5,7 @@ import {getTranslation} from '../../../../locales/materialTable';
 import axios from "axios";
 import _ from "lodash";
 import ProductModifyModalComponent from "../ProductModifyModal/productModifyModal";
+import {Checkbox} from "@material-ui/core";
 
 const ProductDashboardListComponent = (props) => {
     const {t} = props;
@@ -44,7 +45,7 @@ const ProductDashboardListComponent = (props) => {
                     {title: '', field: 'img', render: item => <img src={item.image} alt="" height="100" width="100"/>},
                     {title: t('ProductTable_Name'), field: 'name'},
                     {title: t('ProductTable_Category'), field: 'category'},
-                    {title: t('ProductTable_IsFeatured'), field: 'isFeatured'},
+                    {title: t('ProductTable_IsFeatured'), field: 'isFeatured', render: item => <Checkbox disabled checked={Boolean(item.isFeatured)} />},
                     {title: t('ProductTable_Code'), field: 'productCode'},
                     {title: t('ProductTable_Desc'), field: 'desc'},
                     {

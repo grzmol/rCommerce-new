@@ -141,5 +141,6 @@
   "MyAccount_InsertNewAddress": "Wprowadź poniżej nowy adres.",
   "MyAccount_UserWillBeLogout": "Po udanej zmianie adresu zostaniesz automatycznie wylogowany.",
   "MyAccount_Change": "Zmień",
-  "Orders_EditStatus": "Edytuj status"
+  "Orders_EditStatus": "Edytuj status",
+  "EditModal_Save": "zapisz"
 }
