@@ -4,8 +4,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faShoppingCart, faSignInAlt, faSignOutAlt, faUser} from '@fortawesome/free-solid-svg-icons'
 import {withRouter} from 'react-router-dom';
 import {Badge} from "@material-ui/core";
+import AuthService from "../../services/authService";
 
-
+const auth = new AuthService();
 const HeaderActionBarComponent = ({history, ...props}) => {
 
     return (
@@ -22,7 +23,7 @@ const HeaderActionBarComponent = ({history, ...props}) => {
             </div>
             {props.isLoggedIn ?
                 <div className='header-action-logout'>
-                    <FontAwesomeIcon className="header-action-icon" onClick={props.logoutAction} icon={faSignOutAlt}/>
+                    <FontAwesomeIcon className="header-action-icon" onClick={auth.logout} icon={faSignOutAlt}/>
                 </div> :
                 <div className='header-action-login'>
                     <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')}

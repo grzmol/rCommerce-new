@@ -8,7 +8,14 @@ const UsersController = () => {
         res.json(users);
     });
 
-
+    router.post('/update', async (req, res) => {
+        let dataToChange = {
+            isActive: req.body.isActive,
+            isAdmin: req.body.isAdmin
+        }
+        let user = await UserModel.findOneAndUpdate({_id: req.body._id}, dataToChange);
+        res.json(user);
+    });
 
     router.post('/changeMail', async (req, res) => {
         let dataToChange = {
