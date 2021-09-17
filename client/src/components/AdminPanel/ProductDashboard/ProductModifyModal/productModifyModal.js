@@ -128,7 +128,7 @@ const ProductModifyModalComponent = (props) => {
             >
                 <Paper className={'new-product-modal'}>
                     <div className={'product-modal-content'}>
-                        <h2>{t('ProductDashboard_NewProduct')}</h2>
+                        {!props.isEdit && <h2>{t('ProductDashboard_NewProduct')}</h2>}
                         <form id="new-product-form" action="POST" onSubmit={saveProduct}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>

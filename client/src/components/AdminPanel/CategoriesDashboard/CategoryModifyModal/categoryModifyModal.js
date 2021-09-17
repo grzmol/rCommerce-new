@@ -53,11 +53,8 @@ const CategoryModifyModalComponent = (props) => {
                 aria-describedby="simple-modal-description"
             >
                 <Paper className={'new-category-modal'}>
-                    <div style={{display: dataReady ? 'none' : 'false'}}>
-                        <LoaderComponent/>
-                    </div>
-                    <div className={'category-modal-content'} style={{opacity: dataReady ? '100' : '0'}}>
-                        <h2>{t('CategoryDashboard_NewItem')}</h2>
+                    <div className={'category-modal-content'} >
+                        {!props.isEdit && <h2>{t('CategoryDashboard_NewItem')}</h2>}
                         <form id="new-product-form" action="POST" onSubmit={saveCategory}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>

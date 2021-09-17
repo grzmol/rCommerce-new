@@ -2,40 +2,37 @@ import React, {useState} from 'react';
 import MaterialTable from 'material-table';
 import {withTranslation} from 'react-i18next';
 import {getTranslation} from '../../../../locales/materialTable';
-import ConfirmationDialogComponent from "../../../ConfirmationDialog/confirmationDialog";
 import _ from 'lodash';
 import axios from "axios";
+import ModifyMenuModalComponent from "../ModifyMenuModal/modifyMenuModal";
 
 const MenuDashboardListComponent = (props) => {
     const {t} = props;
-    const [confirmationModal, setConfirmationModal] = useState(false);
-    const [menuItemsToRemove, setMenuItemsToRemove] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
+    const [itemData, setItemData] = useState({});
 
-    const deleteMenuItems = () => {
+    const closeModal = () => {
+        setModalOpen(false);
+    }
+    const openModal = (editData) => {
+        if(editData && !_.isEmpty(editData)){
+            setItemData(editData);
+        }else{
+            setItemData({});
+        }
+        setModalOpen(true);
+    }
+
+    const deleteMenuItems = (idToDelete) => {
 
 
-        axios.post('/api/menu/delete', {idsToRemove: menuItemsToRemove}).then(resp => {
+        axios.post('/api/menu/delete', {idsToRemove: [idToDelete]}).then(resp => {
             if (resp.status === 200) {
                 props.fetchAction();
-                closeConfirmationDialog();
             }
         })
     }
-    const closeConfirmationDialog = () => {
-        setConfirmationModal(false);
-    }
-    const initRemoveAction = () => {
-        setConfirmationModal(true);
-    }
-    const handleItemSelection = (selectedItems) => {
-        let itemsToDelete = [];
 
-        _.each(selectedItems, selectedItem => {
-            itemsToDelete.push(selectedItem._id);
-        });
-
-        setMenuItemsToRemove(itemsToDelete);
-    }
     return (
         <div>
             <MaterialTable
@@ -49,17 +46,20 @@ const MenuDashboardListComponent = (props) => {
                 options={{
                     selection: true
                 }}
-                onSelectionChange={handleItemSelection}
                 actions={[
                     {
                         tooltip: t('Table_EditTooltip'),
                         icon: 'edit',
-                        onClick: ()=> {}
+                        onClick: (event, rowData)=> {
+                            openModal(rowData);
+                        }
                     },
                     {
                         tooltip: t('Table_RemoveTooltip'),
                         icon: 'delete',
-                        onClick: initRemoveAction
+                        onClick: (event, rowData) => {
+                            deleteMenuItems(rowData._id);
+                        }
                     }
                 ]}
                 options={{
@@ -67,8 +67,8 @@ const MenuDashboardListComponent = (props) => {
                 }}
                 localization={getTranslation()}
             />
-            <ConfirmationDialogComponent open={confirmationModal} disagree={closeConfirmationDialog}
-                                         agree={deleteMenuItems}/>
+            <ModifyMenuModalComponent open={modalOpen} fetchAction={props.fetchAction} itemData={itemData}
+                                      isEdit={true} closeModal={closeModal}/>
         </div>
 
     )
