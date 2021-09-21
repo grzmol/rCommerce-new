@@ -13,7 +13,8 @@ import {Backdrop, CircularProgress} from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 
 import {withTranslation} from "react-i18next";
-
+import AuthService from "../../services/authService";
+const auth = new AuthService();
 const HeaderComponent = ({history, ...props}) => {
     const [backgroundClass, setBackgroundClass] = useState('');
     const [menuOpenClass, setMenuOpenClass] = useState('');
