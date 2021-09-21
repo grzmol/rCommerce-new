@@ -17,16 +17,23 @@ import EditIcon from '@material-ui/icons/Edit';
 import DialogContentText from "@material-ui/core/DialogContentText";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import _ from "lodash";
 
 import {withRouter} from "react-router-dom";
 
 const auth = new AuthService();
-const currentUser = auth.getProfile();
 
 const MyAccountInformationComponent = ({history, ...props}) => {
     const {t} = props;
     const [open, setOpen] = React.useState(false);
     const [email, setEmail] = React.useState('');
+    const [currentUser, setCurrentUser] = React.useState(auth.getProfile() || {});
+
+    useEffect(() => {
+        if(_.isEmpty(currentUser)){
+            setCurrentUser(auth.getProfile());
+        }
+    });
 
     const handleClickOpen = () => {
         setOpen(true);

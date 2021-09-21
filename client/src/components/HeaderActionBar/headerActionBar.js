@@ -21,9 +21,9 @@ const HeaderActionBarComponent = ({history, ...props}) => {
                 <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/account/information')}
                                  icon={faUser}/>
             </div>
-            {props.isLoggedIn ?
+            {auth.isLoggedIn() ?
                 <div className='header-action-logout'>
-                    <FontAwesomeIcon className="header-action-icon" onClick={auth.logout} icon={faSignOutAlt}/>
+                    <FontAwesomeIcon className="header-action-icon" onClick={() => auth.logout()} icon={faSignOutAlt}/>
                 </div> :
                 <div className='header-action-login'>
                     <FontAwesomeIcon className="header-action-icon" onClick={() => history.push('/login')}

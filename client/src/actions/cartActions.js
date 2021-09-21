@@ -2,7 +2,7 @@ import axios from "axios";
 import AuthService from "../services/authService";
 
 const auth = new AuthService();
-const currentUser = auth.getProfile();
+
 
 export const FETCH_CART_REQUEST = "FETCH_CART_REQUEST";
 export const FETCH_CART_SUCCESS = "FETCH_CART_SUCCESS";
@@ -31,6 +31,7 @@ export const fetchCart = () => {
             type: FETCH_CART_REQUEST
         });
         try {
+            const currentUser = auth.getProfile();
             const {data, status} = await axios.post('/api/cart', {user: currentUser.username})
             if (status === 200 && data) {
                 dispatch({type: FETCH_CART_SUCCESS, status, payload: data});
@@ -53,6 +54,7 @@ export const createCart = () => {
             type: CREATE_CART_REQUEST
         });
         try {
+            const currentUser = auth.getProfile();
             const {data, status} = await axios.post('/api/cart/new', {user: currentUser.username})
             dispatch(fetchCart());
             dispatch({type: CREATE_CART_SUCCESS, status, payload: data});
