@@ -28,12 +28,12 @@ jobs:
           echo '2'
           
       - name: Test 3
-        if: steps.changed-files.outputs.test_checkbox == 'true'
+        if: ${{ steps.changed-files.outputs.test_checkbox == 'true' }}
         run: |
           echo '3'
           
       - name: Test 4
-        if: steps.changed-files.outputs.test_checkbox == 'false'
+        if: ${{ steps.changed-files.outputs.test_checkbox == 'false' }}
         run: |
           echo '4'
 
