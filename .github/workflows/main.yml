@@ -15,10 +15,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-
-      - name: Test 0
-        run: |
-          echo ${{ github.event.inputs.test_checkbox }}
           
       - name: Test 1
         if: ${{ github.event.inputs.test_checkbox == true }}
