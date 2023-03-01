@@ -1,0 +1,44 @@
+name: Checkbox
+
+on:
+  workflow_dispatch:
+    inputs:
+      test_checkbox:
+        description: 'Test Checkbox'
+        type: boolean
+jobs:
+  validate_deployment_prod:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Test 0
+        run: |
+          echo ${{ github.event.inputs.test_checkbox }}
+          
+      - name: Test 1
+        if: ${{ github.event.inputs.test_checkbox == true }}
+        run: |
+          echo '1'
+          
+          
+      - name: Test 2
+        if: ${{ github.event.inputs.test_checkbox == false }}
+        run: |
+          echo '2'
+          
+      - name: Test 3
+        if: steps.changed-files.outputs.test_checkbox == 'true'
+        run: |
+          echo '3'
+          
+      - name: Test 4
+        if: steps.changed-files.outputs.test_checkbox == 'false'
+        run: |
+          echo '4'
+
+
